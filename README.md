@@ -80,3 +80,8 @@ Proyecto desarrollado por el equipo 404 Syndicate para el Bootcamp de desarrollo
 ## Integrantes
 - Ariel Norambuena
 - Bayron Benavides
+- Camila San Martín
+- Cristian Delgadillo
+- Francesca Cárcammo
+- Luis González
+- Matías Pérez
