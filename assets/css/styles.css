@@ -961,6 +961,12 @@ ul {
   border: 1px solid var(--color-border);
   max-width: 18rem;
 }
+.about__badge:hover {
+   transform: translateY(-4px) scale(1.05);
+   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+   border: 2px solid #735ac0; /* Añade o cambia el borde */
+   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
 
 .about__badge-number {
   font-size: 2.25rem;
