@@ -78,25 +78,90 @@
   // ===========================
   // CONTACT FORM SUBMISSION
   // ===========================
-  const contactForm = document.getElementById("contactForm")
-  const toast = document.getElementById("toast")
 
-  if (contactForm && toast) {
-    contactForm.addEventListener("submit", (e) => {
-      e.preventDefault()
 
-      // Show toast notification
-      toast.classList.add("show")
+const telInput = document.getElementById("phone");
 
-      // Reset form
-      contactForm.reset()
+// Establecer placeholder desde JavaScript
+telInput.placeholder = "Telefono: 9 1234 5678";
 
-      // Hide toast after 5 seconds
-      setTimeout(() => {
-        toast.classList.remove("show")
-      }, 5000)
-    })
+// Prevenir borrar el prefijo +56
+telInput.addEventListener("keydown", (e) => {
+  if (telInput.selectionStart <= 4 && (e.key === "Backspace" || e.key === "Delete")) {
+    e.preventDefault();
   }
+});
+
+// Mantener siempre el prefijo +56
+telInput.addEventListener("input", () => {
+  if (!telInput.value.startsWith("+56 ")) {
+    telInput.value = "+56 ";
+  }
+});
+
+// Un solo event listener para el submit
+document.getElementById("contactForm").addEventListener("submit", function (e) {
+  e.preventDefault(); // Evita enviar si hay errores
+
+  let nombre = document.getElementById("name").value.trim();
+  let email = document.getElementById("email").value.trim();
+  let asunto = document.getElementById("subject").value.trim();
+  let mensaje = document.getElementById("message").value.trim();
+
+  // Obtener el teléfono y quitar el prefijo +56 para validar
+  let telefono = telInput.value.replace("+56 ", "").trim();
+
+  // Expresiones regulares
+  let regexTelefono = /^[0-9]{8,15}$/;  
+  let regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  // Validaciones
+  if (nombre === "") {
+    alert("El nombre completo es obligatorio.");
+    return;
+  }
+
+  if (!regexTelefono.test(telefono)) {
+    alert("El número de teléfono debe contener solo números (8 a 15 dígitos).");
+    return;
+  }
+
+  if (!regexEmail.test(email)) {
+    alert("Debe ingresar un email válido.");
+    return;
+  }
+
+  if (asunto === "") {
+    alert("El asunto es obligatorio.");
+    return;
+  }
+
+  if (mensaje.length < 10) {
+    alert("El mensaje debe tener al menos 10 caracteres.");
+    return;
+  }
+
+  // Si pasa todas las validaciones, mostrar toast y resetear
+  const toast = document.getElementById("toast");
+  if (toast) {
+    toast.classList.add("show");
+
+    // Resetear formulario
+    this.reset();
+    
+    // Restaurar el prefijo +56 después del reset
+    setTimeout(() => {
+      telInput.value = "+56 ";
+    }, 0);
+
+    // Ocultar toast después de 5 segundos
+    setTimeout(() => {
+      toast.classList.remove("show");
+    }, 5000);
+  }
+});
+
+  
 
   // ===========================
   // INTERSECTION OBSERVER FOR ANIMATIONS
