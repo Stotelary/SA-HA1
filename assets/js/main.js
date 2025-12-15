@@ -26,23 +26,29 @@
   // ===========================
   // MOBILE MENU TOGGLE
   // ===========================
-  const menuToggle = document.getElementById("menuToggle")
-  const mobileMenu = document.getElementById("mobileMenu")
+  // const menuToggle = document.getElementById("menuToggle")
+  // const mobileMenu = document.getElementById("mobileMenu")
 
-  if (menuToggle && mobileMenu) {
-    menuToggle.addEventListener("click", () => {
-      menuToggle.classList.toggle("active")
-      mobileMenu.classList.toggle("active")
-    })
+  // if (menuToggle && mobileMenu) {
+  //   menuToggle.addEventListener("click", () => {
+  //     menuToggle.classList.toggle("active")
+  //     mobileMenu.classList.toggle("active")
+  //   })
 
-    // Close mobile menu when clicking on a link
-    const mobileLinks = mobileMenu.querySelectorAll(".mobile-menu__link")
-    mobileLinks.forEach((link) => {
-      link.addEventListener("click", () => {
-        menuToggle.classList.remove("active")
-        mobileMenu.classList.remove("active")
-      })
-    })
+  //   // Close mobile menu when clicking on a link
+  //   const mobileLinks = mobileMenu.querySelectorAll(".mobile-menu__link")
+  //   mobileLinks.forEach((link) => {
+  //     link.addEventListener("click", () => {
+  //       menuToggle.classList.remove("active")
+  //       mobileMenu.classList.remove("active")
+  //     })
+  //   })
+  // }
+  const menuToggle = document.querySelector('.navbar-toggler');
+  if (menuToggle) {
+      menuToggle.addEventListener('click', function() {
+          this.classList.toggle('active');
+      });
   }
 
   // ===========================

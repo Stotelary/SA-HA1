@@ -119,11 +119,11 @@ ul {
 }
 
 .text-primary {
-  color: var(--color-primary);
+  color: var(--color-primary) !important;
 }
 
 .text-secondary {
-  color: var(--color-secondary);
+  color: var(--color-secondary) !important;
 }
 
 .text-balance {
@@ -411,8 +411,8 @@ ul {
 }
 
 .btn--lg {
-  padding: 0.875rem 1.75rem;
-  font-size: 1rem;
+  padding: 0.875rem 1.75rem !important;
+  font-size: 1rem !important;
 }
 
 .btn--full {
@@ -428,6 +428,7 @@ ul {
   background: #5d47a1;
   transform: translateY(-2px);
   box-shadow: var(--shadow-lg);
+  color: #ffffff;
 }
 
 .btn--secondary {
@@ -439,6 +440,7 @@ ul {
   background: #e04528;
   transform: translateY(-2px);
   box-shadow: var(--shadow-lg);
+  color: #ffffff;
 }
 
 .btn--outline {
@@ -460,6 +462,7 @@ ul {
 .btn:hover .btn__arrow {
   transform: translateX(4px);
 }
+
 
 .icon {
   width: 20px;
@@ -1486,4 +1489,150 @@ textarea.form-input {
     margin-left: 0;
     margin-right: 0;
   }
+}
+/* ===========================
+   BOOTSTRAP INTEGRATION
+   =========================== */
+
+/* Sobrescribir algunos estilos de Bootstrap para mantener tu diseño */
+.navbar {
+    padding: 0;
+}
+
+.navbar-toggler {
+    border: none;
+    padding: 8px;
+    box-shadow: none !important;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none !important;
+}
+
+/* Asegurar que el menú colapsado mantenga el fondo */
+.navbar-collapse {
+    background-color: transparent;
+}
+
+/* Ajustes específicos para móvil */
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        background-color: #ffffff;
+        padding: 1rem;
+        border-top: 1px solid var(--color-border);
+        margin-top: 1rem;
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-lg);
+    }
+    
+    .navbar-nav {
+        gap: 0.5rem;
+    }
+    
+    .nav-link.nav__link {
+        padding: 0.5rem 1rem;
+        border-radius: var(--radius-sm);
+    }
+    
+    .nav-link.nav__link:hover {
+        background: var(--color-muted);
+    }
+    
+    .header__actions {
+        flex-direction: column;
+        width: 100%;
+        gap: 0.5rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--color-border);
+        margin-top: 1rem;
+    }
+    
+    .header__actions .btn {
+        width: 100%;
+    }
+}
+
+/* Asegurar que el header fijo funcione bien con Bootstrap */
+.fixed-top {
+    animation: none !important;
+}
+
+/* Mantener tu animación de scroll */
+.header.scrolled {
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(12px) !important;
+    box-shadow: var(--shadow-md) !important;
+}
+
+/* Sobrescribir estilos de nav-link de Bootstrap */
+.nav-link.nav__link {
+    color: rgba(36, 32, 55, 0.8);
+    font-weight: 500;
+    transition: var(--transition);
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+.nav-link.nav__link:hover,
+.nav-link.nav__link:focus {
+    color: var(--color-primary);
+}
+
+/* Mantener el efecto de subrayado */
+.nav-link.nav__link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-primary);
+    transition: width 0.3s ease;
+}
+
+.nav-link.nav__link:hover::after {
+    width: 100%;
+}
+
+/* Ajustar el logo para Bootstrap */
+.navbar-brand.logo {
+    margin-right: 0;
+    padding: 0;
+}
+
+/* Asegurar que los botones mantengan tus estilos */
+.btn {
+    /* Tus estilos actuales se mantienen */
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    border-radius: var(--radius-md) !important;
+    transition: var(--transition) !important;
+    font-size: 0.875rem;
+}
+
+.btn-primary {
+    background: var(--color-primary) !important;
+    border-color: var(--color-primary) !important;
+}
+
+.btn-primary:hover {
+    background: #5d47a1 !important;
+    border-color: #5d47a1 !important;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-outline {
+    background: transparent !important;
+    border: 2px solid var(--color-border) !important;
+    color: var(--color-foreground) !important;
+}
+
+.btn-outline:hover {
+    border-color: var(--color-primary) !important;
+    color: var(--color-primary) !important;
+    background: transparent !important;
 }

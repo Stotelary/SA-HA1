@@ -3,35 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- En la sección <head> del index.html -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css"> <!-- Tu CSS personalizado después de Bootstrap -->
     <meta name="description" content="404 Service - Plataforma líder en servicios profesionales online y presenciales">
     <meta name="theme-color" content="#735ac0">
     <title>404 Service</title>
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
-    <!-- Header -->
-    <header id="header" class="header">
+    <!-- Header con Bootstrap -->
+    <header id="header" class="header navbar navbar-expand-lg fixed-top py-3">
         <div class="container">
-            <div class="header__content">
-                <!-- Logo -->
-                <a href="#" class="logo">
-                    <div class="logo__icon">
-                        <span>404</span>
-                    </div>
-                    <span class="logo__text">Service</span>
-                </a>
+            <!-- Logo -->
+            <a href="#" class="navbar-brand logo">
+                <div class="logo__icon">
+                    <span>404</span>
+                </div>
+                <span class="logo__text">Service</span>
+            </a>
 
+            <!-- Mobile Menu Button -->
+            <button class="navbar-toggler menu-toggle" id="menuToggle" type="button" 
+                    data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                    aria-controls="navbarContent" aria-expanded="false" aria-label="Menú">
+                <span class="menu-toggle__line"></span>
+                <span class="menu-toggle__line"></span>
+                <span class="menu-toggle__line"></span>
+            </button>
+
+            <!-- Navigation -->
+            <div class="collapse navbar-collapse" id="navbarContent">
                 <!-- Desktop Navigation -->
-                <nav class="nav" id="nav">
-                    <a href="#servicios" class="nav__link">Servicios</a>
-                    <a href="#sobre-nosotros" class="nav__link">Nosotros</a>
-                    <a href="#beneficios" class="nav__link">Beneficios</a>
-                    <a href="#testimonios" class="nav__link">Testimonios</a>
-                    <a href="#contacto" class="nav__link">Contacto</a>
+                <nav class="navbar-nav mx-auto mb-2 mb-lg-0" id="nav">
+                    <a href="#servicios" class="nav-link nav__link ms-3">Servicios</a>
+                    <a href="#sobre-nosotros" class="nav-link nav__link ms-3">Nosotros</a>
+                    <a href="#beneficios" class="nav-link nav__link ms-3">Beneficios</a>
+                    <a href="#testimonios" class="nav-link nav__link ms-3">Testimonios</a>
+                    <a href="#contacto" class="nav-link nav__link ms-3">Contacto</a>
                 </nav>
 
                 <!-- Desktop Actions -->
-                <div class="header__actions">
+                <div class="header__actions d-flex align-items-center gap-2">
                     <button class="btn-cart" aria-label="Carrito de compras">
                         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <circle cx="9" cy="21" r="1"></circle>
@@ -40,30 +53,8 @@
                         </svg>
                         <span class="cart-badge">0</span>
                     </button>
-                    <button class="btn btn--outline">Iniciar Sesión</button>
-                    <button class="btn btn--primary">Registrarse</button>
-                </div>
-
-                <!-- Mobile Menu Button -->
-                <button class="menu-toggle" id="menuToggle" aria-label="Menú">
-                    <span class="menu-toggle__line"></span>
-                    <span class="menu-toggle__line"></span>
-                    <span class="menu-toggle__line"></span>
-                </button>
-            </div>
-
-            <!-- Mobile Menu -->
-            <div class="mobile-menu" id="mobileMenu">
-                <nav class="mobile-menu__nav">
-                    <a href="#servicios" class="mobile-menu__link">Servicios</a>
-                    <a href="#sobre-nosotros" class="mobile-menu__link">Nosotros</a>
-                    <a href="#beneficios" class="mobile-menu__link">Beneficios</a>
-                    <a href="#testimonios" class="mobile-menu__link">Testimonios</a>
-                    <a href="#contacto" class="mobile-menu__link">Contacto</a>
-                </nav>
-                <div class="mobile-menu__actions">
-                    <button class="btn btn--outline btn--full">Iniciar Sesión</button>
-                    <button class="btn btn--primary btn--full">Registrarse</button>
+                    <button class="btn btn-outline ms-3">Iniciar Sesión</button>
+                    <button class="btn btn-primary ms-3">Registrarse</button>
                 </div>
             </div>
         </div>
@@ -813,7 +804,8 @@
             <div class="toast__description">Te contactaremos pronto. Gracias por tu interés.</div>
         </div>
     </div>
-
+    <!-- Antes de tu script principal -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 </html>
