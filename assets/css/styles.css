@@ -1,7 +1,3 @@
-/* ===========================
-   404 SERVICE - CUSTOM STYLES
-   =========================== */
-
 /* Import Google Font */
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap");
 
@@ -50,6 +46,50 @@
 
   /* Transitions */
   --transition: all 0.3s ease;
+}
+
+/* Added styles for "Explore All Services" button section */
+.explore-all-services {
+  text-align: center;
+  margin-top: 3rem;
+  padding: 2rem;
+  background: rgba(115, 90, 192, 0.05);
+  border-radius: var(--radius-xl);
+}
+
+.explore-all-services__text {
+  margin-top: 1rem;
+  color: rgba(36, 32, 55, 0.7);
+  font-size: 1rem;
+}
+
+/* Added enhanced styles for contact form container */
+.contact__form-container {
+  background: var(--color-card);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  box-shadow: var(--shadow-lg);
+  transition: var(--transition);
+}
+
+.contact__form-container:hover {
+  border-color: rgba(115, 90, 192, 0.3);
+  box-shadow: 0 20px 40px rgba(115, 90, 192, 0.15);
+}
+
+.contact__form-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-foreground);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+@media (min-width: 1024px) {
+  .contact__form-title {
+    font-size: 1.875rem;
+  }
 }
 
 /* ===========================

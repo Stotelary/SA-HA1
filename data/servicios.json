@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "name": "Gasfitería Profesional",
+    "description": "Reparaciones y mantención de sistemas de agua y gas. Profesionales certificados disponibles 24/7.",
+    "category": "hogar",
+    "type": "presencial",
+    "price": 25000,
+    "rating": 4.9,
+    "image": "./assets/img/gasfitero-profesional-trabajando-en-tuberia.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Sesión Gaming Online",
+    "description": "Juega con profesionales o aprende estrategias avanzadas. Diferentes juegos disponibles.",
+    "category": "entretenimiento",
+    "type": "online",
+    "price": 8000,
+    "rating": 4.8,
+    "image": "./assets/img/jugador-profesional-de-gaming.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Tutorías Académicas",
+    "description": "Clases particulares en matemáticas, ciencias, idiomas y más. Profesores calificados.",
+    "category": "educacion",
+    "type": "ambos",
+    "price": 15000,
+    "rating": 4.9,
+    "image": "./assets/img/tutoria-online-estudiante-y-profesor.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Diseño Gráfico Profesional",
+    "description": "Logos, branding, diseño web y más. Creatividad sin límites para tu negocio.",
+    "category": "creatividad",
+    "type": "online",
+    "price": 35000,
+    "rating": 4.7,
+    "image": "./assets/img/diseñador-grafico-trabajando.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Fotografía Profesional",
+    "description": "Sesiones fotográficas para eventos, productos, retratos y más. Equipos de alta calidad.",
+    "category": "creatividad",
+    "type": "presencial",
+    "price": 50000,
+    "rating": 4.8,
+    "image": "./assets/img/fotografo-profesional-en-sesion.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Soporte Técnico Informático",
+    "description": "Reparación de computadores, instalación de software, configuración de redes y más.",
+    "category": "tecnologia",
+    "type": "ambos",
+    "price": 20000,
+    "rating": 4.6,
+    "image": "./assets/img/tecnico-reparando-computador.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Electricista Certificado",
+    "description": "Instalaciones eléctricas, reparaciones y mantención. Profesionales certificados SEC.",
+    "category": "hogar",
+    "type": "presencial",
+    "price": 30000,
+    "rating": 4.9,
+    "image": "./assets/img/electricista-trabajando-en-panel.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Yoga y Meditación Online",
+    "description": "Clases de yoga y meditación guiada. Mejora tu bienestar físico y mental desde casa.",
+    "category": "salud",
+    "type": "online",
+    "price": 12000,
+    "rating": 4.8,
+    "image": "./assets/img/instructora-de-yoga.jpg"
+  },
+  {
+    "id": 9,
+    "name": "Carpintería a Medida",
+    "description": "Muebles personalizados, reparaciones y restauración de madera. Trabajo artesanal.",
+    "category": "hogar",
+    "type": "presencial",
+    "price": 40000,
+    "rating": 4.7,
+    "image": "./assets/img/carpintero-trabajando-madera.jpg"
+  },
+  {
+    "id": 10,
+    "name": "Desarrollo Web",
+    "description": "Sitios web profesionales, e-commerce, landing pages. Diseño responsivo y moderno.",
+    "category": "tecnologia",
+    "type": "online",
+    "price": 80000,
+    "rating": 4.9,
+    "image": "./assets/img/desarrollador-web-programando.jpg"
+  },
+  {
+    "id": 11,
+    "name": "Entrenamiento Personal",
+    "description": "Planes de entrenamiento personalizados. Alcanza tus objetivos fitness con un profesional.",
+    "category": "salud",
+    "type": "ambos",
+    "price": 18000,
+    "rating": 4.8,
+    "image": "./assets/img/entrenador-personal-gym.jpg"
+  },
+  {
+    "id": 12,
+    "name": "Clases de Música",
+    "description": "Aprende a tocar guitarra, piano, batería y más. Profesores con experiencia.",
+    "category": "educacion",
+    "type": "ambos",
+    "price": 16000,
+    "rating": 4.7,
+    "image": "./assets/img/profesor-de-musica-con-guitarra.jpg"
+  }
+]
