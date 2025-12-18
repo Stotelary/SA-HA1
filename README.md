@@ -52,7 +52,7 @@ cd SA-HA1
 Si tienes la extensión "Live Server" en VS Code, puedes abrir index.html y dar clic en "Go Live".
 
 # ✒️ Autores
-##Equipo 6 "404 Syndicate":
+## Equipo 6 "404 Syndicate":
 * Ariel Norambuena ([perfil de GitHub](https://github.com/Stotelary))
 * Bayron Benavides ([perfil de GitHub](https://github.com/BayronBA))
 * Camila San Martín ([perfil de GitHub](https://github.com/Camimi-96))
