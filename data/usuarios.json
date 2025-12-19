@@ -1,0 +1,24 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "nombre": "Juan",
+      "apellido": "Pérez",
+      "email": "juan@ejemplo.com",
+      "telefono": "+56 9 1234 5678",
+      "direccion": "Av. Providencia 1234, Santiago",
+      "password": "123456",
+      "fechaRegistro": "2024-01-15T10:30:00Z"
+    },
+    {
+      "id": 2,
+      "nombre": "María",
+      "apellido": "González",
+      "email": "maria@ejemplo.com",
+      "telefono": "+56 9 8765 4321",
+      "direccion": "Calle Las Condes 567, Santiago",
+      "password": "123456",
+      "fechaRegistro": "2024-02-20T14:45:00Z"
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "serviciosContratados": [
+    {
+      "id": 1,
+      "usuarioId": 1,
+      "servicioId": 1,
+      "nombre": "Gasfitería - Reparación de Cañerías",
+      "descripcion": "Reparación urgente de fuga en cañería principal",
+      "imagen": "assets/img/gasfiteria.jpg",
+      "fecha": "15 de Mayo, 2024",
+      "precio": "$35.000",
+      "estado": "completado",
+      "resenaAgregada": false
+    },
+    {
+      "id": 2,
+      "usuarioId": 1,
+      "servicioId": 3,
+      "nombre": "Tutorías Online - Matemáticas",
+      "descripcion": "Clases particulares de cálculo nivel universitario",
+      "imagen": "assets/img/tutorias.jpg",
+      "fecha": "20 de Junio, 2024",
+      "precio": "$25.000",
+      "estado": "completado",
+      "resenaAgregada": false
+    },
+    {
+      "id": 3,
+      "usuarioId": 1,
+      "servicioId": 5,
+      "nombre": "Electricidad Residencial",
+      "descripcion": "Instalación de nuevos enchufes en la cocina",
+      "imagen": "assets/img/electricidad.jpg",
+      "fecha": "10 de Julio, 2024",
+      "precio": "$45.000",
+      "estado": "completado",
+      "resenaAgregada": true
+    },
+    {
+      "id": 4,
+      "usuarioId": 1,
+      "servicioId": 2,
+      "nombre": "Gaming - Coaching Profesional",
+      "descripcion": "Sesiones de coaching para mejorar en Valorant",
+      "imagen": "assets/img/gaming.jpg",
+      "fecha": "25 de Julio, 2024",
+      "precio": "$20.000",
+      "estado": "proximo",
+      "resenaAgregada": false
+    },
+    {
+      "id": 5,
+      "usuarioId": 1,
+      "servicioId": 8,
+      "nombre": "Carpintería - Muebles a Medida",
+      "descripcion": "Fabricación de estantería para sala de estar",
+      "imagen": "assets/img/carpinteria.jpg",
+      "fecha": "5 de Agosto, 2024",
+      "precio": "$120.000",
+      "estado": "proximo",
+      "resenaAgregada": false
+    }
+  ]
+}

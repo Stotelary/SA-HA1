@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/perfil.css">
+    <meta name="description" content="Perfil de usuario - 404 Service">
+    <meta name="theme-color" content="#735ac0">
+    <title>Mi Perfil - 404 Service</title>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header" class="header navbar navbar-expand-lg fixed-top py-3">
+        <div class="container">
+            <!-- Logo -->
+            <a href="index.html" class="navbar-brand logo">
+                <div class="logo__icon">
+                    <span>404</span>
+                </div>
+                <span class="logo__text">Service</span>
+            </a>
+
+            <!-- Mobile Menu Button -->
+            <button class="navbar-toggler menu-toggle" id="menuToggle" type="button" 
+                    data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                    aria-controls="navbarContent" aria-expanded="false" aria-label="Menú">
+                <span class="menu-toggle__line"></span>
+                <span class="menu-toggle__line"></span>
+                <span class="menu-toggle__line"></span>
+            </button>
+
+            <!-- Navigation -->
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <!-- Desktop Navigation -->
+                <nav class="navbar-nav mx-auto mb-2 mb-lg-0" id="nav">
+                    <a href="index.html#servicios" class="nav-link nav__link ms-3">Servicios</a>
+                    <a href="index.html#sobre-nosotros" class="nav-link nav__link ms-3">Nosotros</a>
+                    <a href="index.html#beneficios" class="nav-link nav__link ms-3">Beneficios</a>
+                    <a href="index.html#testimonios" class="nav-link nav__link ms-3">Testimonios</a>
+                    <a href="index.html#contacto" class="nav-link nav__link ms-3">Contacto</a>
+                </nav>
+
+                <!-- Desktop Actions -->
+                <div class="header__actions d-flex align-items-center gap-2">
+                    <button class="btn-cart" aria-label="Carrito de compras">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                        <span class="cart-badge">0</span>
+                    </button>
+                    <a href="perfil.html" class="btn btn-outline ms-3">Mi Perfil</a>
+                    <button id="logoutBtn" class="btn btn-primary ms-3">Cerrar Sesión</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="profile-page">
+        <div class="container">
+            <!-- Profile Header -->
+            <div class="profile-header">
+                <div class="profile-avatar">
+                    <img src="assets/img/hombre-con-lentes.jpg" alt="Avatar" id="userAvatar">
+                    <button class="avatar-edit" aria-label="Editar foto">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="profile-info">
+                    <h1 class="profile-name" id="userName">Cargando...</h1>
+                    <p class="profile-email" id="userEmail">Cargando...</p>
+                    <div class="profile-stats">
+                        <div class="stat-item">
+                            <span class="stat-number" id="totalServices">0</span>
+                            <span class="stat-label">Servicios</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="totalReviews">0</span>
+                            <span class="stat-label">Reseñas</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">4.8</span>
+                            <span class="stat-label">Calificación</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Details -->
+            <div class="profile-content">
+                <div class="profile-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Información Personal</h2>
+                        <button class="btn-edit" id="editProfileBtn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                            </svg>
+                            Editar
+                        </button>
+                    </div>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                            <div class="info-content">
+                                <span class="info-label">Nombre Completo</span>
+                                <span class="info-value" id="userFullName">-</span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            <div class="info-content">
+                                <span class="info-label">Correo Electrónico</span>
+                                <span class="info-value" id="userEmailDetail">-</span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                            <div class="info-content">
+                                <span class="info-label">Teléfono</span>
+                                <span class="info-value" id="userPhone">-</span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <div class="info-content">
+                                <span class="info-label">Dirección</span>
+                                <span class="info-value" id="userAddress">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service History -->
+                <div class="profile-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Historial de Servicios</h2>
+                        <div class="history-tabs">
+                            <button class="tab-btn active" data-tab="completed">Realizados</button>
+                            <button class="tab-btn" data-tab="upcoming">Próximos</button>
+                        </div>
+                    </div>
+
+                    <!-- Completed Services -->
+                    <div id="completed" class="tab-content active">
+                        <div class="services-list" id="completedServicesList">
+                            <!-- Servicios se cargarán dinámicamente -->
+                        </div>
+                    </div>
+
+                    <!-- Upcoming Services -->
+                    <div id="upcoming" class="tab-content">
+                        <div class="services-list" id="upcomingServicesList">
+                            <!-- Servicios se cargarán dinámicamente -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__brand">
+                    <a href="index.html" class="logo">
+                        <div class="logo__icon logo__icon--footer">
+                            <span>404</span>
+                        </div>
+                        <span class="logo__text logo__text--footer">
+                            Service
+                        </span>
+                    </a>
+                    <p class="footer__description">
+                        Conectamos profesionales con personas que necesitan servicios de calidad. Tu satisfacción es nuestra prioridad.
+                    </p>
+                    <div class="footer__social">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">
+                            <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                <rect x="2" y="9" width="4" height="12"/>
+                                <circle cx="4" cy="4" r="2"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer__links">
+                    <h3 class="footer__links-title">Servicios</h3>
+                    <ul class="footer__links-list">
+                        <li><a href="#" class="footer__link">Gasfitería</a></li>
+                        <li><a href="#" class="footer__link">Gaming Online</a></li>
+                        <li><a href="#" class="footer__link">Diseño Gráfico</a></li>
+                        <li><a href="#" class="footer__link">Tutorías</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__links">
+                    <h3 class="footer__links-title">Empresa</h3>
+                    <ul class="footer__links-list">
+                        <li><a href="index.html#sobre-nosotros" class="footer__link">Sobre Nosotros</a></li>
+                        <li><a href="index.html#beneficios" class="footer__link">Beneficios</a></li>
+                        <li><a href="index.html#testimonios" class="footer__link">Testimonios</a></li>
+                        <li><a href="index.html#contacto" class="footer__link">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__links">
+                    <h3 class="footer__links-title">Legal</h3>
+                    <ul class="footer__links-list">
+                        <li><a href="#" class="footer__link">Términos y Condiciones</a></li>
+                        <li><a href="#" class="footer__link">Política de Privacidad</a></li>
+                        <li><a href="#" class="footer__link">Política de Cookies</a></li>
+                        <li><a href="#" class="footer__link">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p class="footer__copyright">© 2025 404 Service. Todos los derechos reservados.</p>
+                <p class="footer__made-with">Hecho con ❤️ en Chile</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/perfil.js"></script>
+</body>
+</html>

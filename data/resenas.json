@@ -1,0 +1,37 @@
+{
+  "resenas": [
+    {
+      "id": 1,
+      "servicioId": 1,
+      "usuarioId": 1,
+      "usuarioNombre": "Juan Pérez",
+      "usuarioEmail": "juan@ejemplo.com",
+      "calificacion": 5,
+      "texto": "Excelente servicio, llegaron en menos de una hora por una emergencia. El profesional fue muy amable y resolvió el problema rápidamente. Precios justos y trabajo garantizado.",
+      "recomienda": true,
+      "fecha": "2024-05-16T14:30:00Z"
+    },
+    {
+      "id": 2,
+      "servicioId": 1,
+      "usuarioId": 2,
+      "usuarioNombre": "Patricia Silva",
+      "usuarioEmail": "patricia@ejemplo.com",
+      "calificacion": 5,
+      "texto": "Contraté el servicio para instalar un nuevo calefón. Muy profesionales, llegaron puntuales y dejaron todo impecable. Totalmente recomendados.",
+      "recomienda": true,
+      "fecha": "2024-04-20T10:15:00Z"
+    },
+    {
+      "id": 3,
+      "servicioId": 1,
+      "usuarioId": 3,
+      "usuarioNombre": "Roberto Campos",
+      "usuarioEmail": "roberto@ejemplo.com",
+      "calificacion": 4,
+      "texto": "Muy buen servicio de mantención. El gasfitero fue muy detallista y me explicó todo el proceso. Precio acorde al mercado.",
+      "recomienda": true,
+      "fecha": "2024-03-10T16:45:00Z"
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/resena.css">
+    <meta name="description" content="Agregar reseña - 404 Service">
+    <meta name="theme-color" content="#735ac0">
+    <title>Agregar Reseña - 404 Service</title>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header" class="header navbar navbar-expand-lg fixed-top py-3">
+        <div class="container">
+            <a href="index.html" class="navbar-brand logo">
+                <div class="logo__icon">
+                    <span>404</span>
+                </div>
+                <span class="logo__text">Service</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="review-page">
+        <div class="container">
+            <div class="review-container">
+                <div class="review-card">
+                    <div class="review-card__header">
+                        <h1 class="review-card__title">Califica tu experiencia</h1>
+                        <p class="review-card__subtitle">Tu opinión nos ayuda a mejorar</p>
+                    </div>
+
+                    <!-- Service Info -->
+                    <div class="service-info" id="serviceInfo">
+                        <img src="assets/img/gasfiteria.jpg" alt="Servicio" class="service-info__image" id="serviceImage">
+                        <div class="service-info__details">
+                            <h3 class="service-info__name" id="serviceName">Cargando...</h3>
+                            <p class="service-info__date" id="serviceDate">Fecha del servicio</p>
+                        </div>
+                    </div>
+
+                    <!-- Review Form -->
+                    <form id="reviewForm" class="review-form">
+                        <!-- Star Rating -->
+                        <div class="form-group">
+                            <label class="form-label">Calificación</label>
+                            <div class="star-rating">
+                                <input type="radio" id="star5" name="rating" value="5" required>
+                                <label for="star5" class="star-label">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                                    </svg>
+                                </label>
+                                <input type="radio" id="star4" name="rating" value="4">
+                                <label for="star4" class="star-label">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                                    </svg>
+                                </label>
+                                <input type="radio" id="star3" name="rating" value="3">
+                                <label for="star3" class="star-label">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                                    </svg>
+                                </label>
+                                <input type="radio" id="star2" name="rating" value="2">
+                                <label for="star2" class="star-label">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                                    </svg>
+                                </label>
+                                <input type="radio" id="star1" name="rating" value="1">
+                                <label for="star1" class="star-label">
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                                    </svg>
+                                </label>
+                            </div>
+                            <span class="rating-text" id="ratingText">Selecciona una calificación</span>
+                        </div>
+
+                        <!-- Review Text -->
+                        <div class="form-group">
+                            <label for="reviewText" class="form-label">Tu reseña</label>
+                            <textarea id="reviewText" name="reviewText" class="form-input" rows="6" 
+                                      placeholder="Cuéntanos sobre tu experiencia con este servicio..." required></textarea>
+                            <small class="form-hint">Mínimo 20 caracteres</small>
+                        </div>
+
+                        <!-- Optional: Would Recommend -->
+                        <div class="form-group form-checkbox">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="recommend" id="recommend" checked>
+                                <span class="checkbox-text">Recomendaría este servicio</span>
+                            </label>
+                        </div>
+
+                        <!-- Submit Buttons -->
+                        <div class="form-actions">
+                            <button type="button" class="btn btn--outline" onclick="history.back()">Cancelar</button>
+                            <button type="submit" class="btn btn--primary">Publicar Reseña</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/resena.js"></script>
+</body>
+</html>
