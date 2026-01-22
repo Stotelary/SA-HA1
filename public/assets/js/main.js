@@ -87,25 +87,6 @@
 
 
 const telInput = document.getElementById("phone");
-
-// Establecer placeholder desde JavaScript
-telInput.placeholder = "Telefono: 9 1234 5678";
-
-// Prevenir borrar el prefijo +56
-telInput.addEventListener("keydown", (e) => {
-  if (telInput.selectionStart <= 4 && (e.key === "Backspace" || e.key === "Delete")) {
-    e.preventDefault();
-  }
-});
-
-// Mantener siempre el prefijo +56
-telInput.addEventListener("input", () => {
-  if (!telInput.value.startsWith("+56 ")) {
-    telInput.value = "+56 ";
-  }
-});
-
-const telInput = document.getElementById("phone");
 const contactForm = document.getElementById("contactForm");
 
 if (telInput && contactForm) {
