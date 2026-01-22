@@ -12,7 +12,7 @@
 // - fecha_registro (timestamp)
 // - rol (varchar 30, default 'USUARIO')
 
-/*const apiRequest = async (url, options) => {
+const apiRequest = async (url, options) => {
   // Implementación de apiRequest
 };
 
@@ -27,7 +27,7 @@ const setCurrentUser = (user) => {
 const getCurrentUser = () => {
   // Implementación de getCurrentUser
 };
-*/
+
 const UsuariosAPI = {
   /*
     Registrar un nuevo usuario
