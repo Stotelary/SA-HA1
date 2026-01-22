@@ -65,6 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(response);
         showToast('Inicio de sesión exitoso', 'success');
         setTimeout(() => {
+          console.log('TOKEN GUARDADO:', localStorage.getItem('authToken'));
           window.location.href = 'perfil.html';
         }, 1500);
 
