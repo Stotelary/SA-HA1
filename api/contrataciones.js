@@ -120,7 +120,7 @@ const ContratacionesAPI = {
     });
   },
 
-  /**
+  /*
    * Eliminar una contratación
    * @param {number} idContratacion - ID de la contratación
    * @returns {Promise<object>}
@@ -132,7 +132,7 @@ const ContratacionesAPI = {
     });
   },
 
-  /**
+  /*
    * Cambiar estado de una contratación
    * @param {number} idContratacion
    * @param {string} nuevoEstado
@@ -142,7 +142,7 @@ const ContratacionesAPI = {
     return await this.update(idContratacion, { estado: nuevoEstado });
   },
 
-  /**
+  /*
    * Obtener contrataciones por estado
    * @param {string} estado
    * @returns {Promise<array>}
@@ -154,7 +154,7 @@ const ContratacionesAPI = {
     });
   },
 
-  /**
+  /*
    * Obtener contrataciones realizadas de un usuario
    * @param {number} idUsuario
    * @returns {Promise<array>}
@@ -169,7 +169,7 @@ const ContratacionesAPI = {
     }
   },
 
-  /**
+  /*
    * Obtener contrataciones pendientes (próximas) de un usuario
    * @param {number} idUsuario
    * @returns {Promise<array>}
@@ -184,7 +184,7 @@ const ContratacionesAPI = {
     }
   },
 
-  /**
+  /*
    * Verificar si el usuario puede dejar reseña (solo si estado = REALIZADO)
    * @param {number} idContratacion
    * @returns {Promise<boolean>}
@@ -198,7 +198,7 @@ const ContratacionesAPI = {
     }
   },
 
-  /**
+  /*
    * Formatear fecha
    * @param {string} fecha
    * @returns {string}
@@ -213,7 +213,7 @@ const ContratacionesAPI = {
     });
   },
 
-  /**
+  /*
    * Verificar si la fecha es futura
    * @param {string} fecha
    * @returns {boolean}

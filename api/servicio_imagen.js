@@ -11,7 +11,7 @@
 const apiRequest = require('./apiRequest'); // Assuming apiRequest is imported from another module
 
 const ServicioImagenAPI = {
-  /**
+  /*
    * Listar todas las imágenes
    * @returns {Promise<array>}
    */
@@ -21,7 +21,7 @@ const ServicioImagenAPI = {
     });
   },
 
-  /**
+  /*
    * Obtener imagen por ID
    * @param {number} idImagen - ID de la imagen
    * @returns {Promise<object>}
@@ -32,7 +32,7 @@ const ServicioImagenAPI = {
     });
   },
 
-  /**
+  /*
    * Obtener imágenes de un servicio
    * @param {number} idServicio - ID del servicio
    * @returns {Promise<array>}
@@ -43,7 +43,7 @@ const ServicioImagenAPI = {
     });
   },
 
-  /**
+  /*
    * Crear una nueva imagen
    * @param {object} imagenData - Datos de la imagen
    * @returns {Promise<object>}
@@ -61,7 +61,7 @@ const ServicioImagenAPI = {
     });
   },
 
-  /**
+  /*
    * Actualizar una imagen
    * @param {number} idImagen - ID de la imagen
    * @param {object} imagenData - Datos actualizados
@@ -79,7 +79,7 @@ const ServicioImagenAPI = {
     });
   },
 
-  /**
+  /*
    * Eliminar una imagen
    * @param {number} idImagen - ID de la imagen
    * @returns {Promise<object>}
@@ -90,7 +90,7 @@ const ServicioImagenAPI = {
     });
   },
 
-  /**
+  /*
    * Obtener imagen principal de un servicio (orden = 1)
    * @param {number} idServicio
    * @returns {Promise<object|null>}
@@ -109,7 +109,7 @@ const ServicioImagenAPI = {
     }
   },
 
-  /**
+  /*
    * Obtener URL de imagen principal o placeholder
    * @param {number} idServicio
    * @returns {Promise<string>}

@@ -12,7 +12,7 @@
 // - fecha_registro (timestamp)
 // - rol (varchar 30, default 'USUARIO')
 
-const apiRequest = async (url, options) => {
+/*const apiRequest = async (url, options) => {
   // Implementación de apiRequest
 };
 
@@ -27,12 +27,12 @@ const setCurrentUser = (user) => {
 const getCurrentUser = () => {
   // Implementación de getCurrentUser
 };
-
+*/
 const UsuariosAPI = {
-  /**
-   * Registrar un nuevo usuario
-   * @param {object} userData - Datos del usuario
-   * @returns {Promise<object>}
+  /*
+    Registrar un nuevo usuario
+    @param {object} userData - Datos del usuario
+   @returns {Promise<object>}
    */
   async register(userData) {
     const payload = {
@@ -50,13 +50,14 @@ const UsuariosAPI = {
     });
   },
 
-  /**
-   * Iniciar sesión
-   * @param {string} email
-   * @param {string} password
-   * @returns {Promise<object>}
+  /*
+    Iniciar sesión
+    @param {string} email
+    @param {string} password
+    @returns {Promise<object>}
    */
   async login(email, password) {
+    console.log("funcion login");
     const response = await apiRequest('/api/auth/login', {
       method: 'POST',
       body: JSON.stringify({ email, password })
@@ -73,9 +74,9 @@ const UsuariosAPI = {
     return response;
   },
 
-  /**
-   * Listar todos los usuarios
-   * @returns {Promise<array>}
+  /*
+    Listar todos los usuarios
+   @returns {Promise<array>}
    */
   async getAll() {
     return await apiRequest('/api/usuarios', {
@@ -83,10 +84,10 @@ const UsuariosAPI = {
     });
   },
 
-  /**
-   * Obtener un usuario por ID
-   * @param {number} idUsuario - ID del usuario
-   * @returns {Promise<object>}
+  /*
+    Obtener un usuario por ID
+    @param {number} idUsuario - ID del usuario
+    @returns {Promise<object>}
    */
   async getById(idUsuario) {
     return await apiRequest(`/api/usuarios/${idUsuario}`, {
@@ -94,11 +95,11 @@ const UsuariosAPI = {
     });
   },
 
-  /**
-   * Actualizar un usuario
-   * @param {number} idUsuario - ID del usuario
-   * @param {object} userData - Datos actualizados
-   * @returns {Promise<object>}
+  /*
+    Actualizar un usuario
+    @param {number} idUsuario - ID del usuario
+    @param {object} userData - Datos actualizados
+    @returns {Promise<object>}
    */
   async update(idUsuario, userData) {
     const payload = {};
@@ -124,10 +125,10 @@ const UsuariosAPI = {
     return response;
   },
 
-  /**
-   * Eliminar un usuario
-   * @param {number} idUsuario - ID del usuario
-   * @returns {Promise<object>}
+  /*
+    Eliminar un usuario
+    @param {number} idUsuario - ID del usuario
+    @returns {Promise<object>}
    */
   async delete(idUsuario) {
     return await apiRequest(`/api/usuarios/${idUsuario}`, {
@@ -135,9 +136,9 @@ const UsuariosAPI = {
     });
   },
 
-  /**
-   * Obtener perfil del usuario actual
-   * @returns {Promise<object>}
+  /*
+   Obtener perfil del usuario actual
+    @returns {Promise<object>}
    */
   async getProfile() {
     return await apiRequest('/api/usuarios/profile', {
@@ -145,9 +146,9 @@ const UsuariosAPI = {
     });
   },
 
-  /**
-   * Obtener usuarios prestadores de servicios
-   * @returns {Promise<array>}
+  /*
+    Obtener usuarios prestadores de servicios
+    @returns {Promise<array>}
    */
   async getPrestadores() {
     return await apiRequest('/api/usuarios/prestadores', {

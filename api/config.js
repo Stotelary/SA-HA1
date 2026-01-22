@@ -15,7 +15,7 @@ const API_CONFIG = {
 // HELPER FUNCTIONS
 // ===========================
 
-/**
+/*
  * Realiza una petición fetch con manejo de errores
  * @param {string} endpoint - Endpoint de la API
  * @param {object} options - Opciones de fetch
@@ -75,7 +75,7 @@ async function apiRequest(endpoint, options = {}) {
   }
 }
 
-/**
+/*
  * Obtiene el token de autenticación del localStorage
  * @returns {string|null}
  */
@@ -83,7 +83,7 @@ function getAuthToken() {
   return localStorage.getItem('authToken');
 }
 
-/**
+/*
  * Guarda el token de autenticación
  * @param {string} token
  */
@@ -91,14 +91,14 @@ function setAuthToken(token) {
   localStorage.setItem('authToken', token);
 }
 
-/**
+/*
  * Elimina el token de autenticación
  */
 function removeAuthToken() {
   localStorage.removeItem('authToken');
 }
 
-/**
+/*
  * Agrega el token de autenticación a las cabeceras
  * @returns {object}
  */
@@ -109,7 +109,7 @@ function getAuthHeaders() {
     : API_CONFIG.HEADERS;
 }
 
-/**
+/*
  * Verifica si el usuario está autenticado
  * @returns {boolean}
  */
@@ -117,7 +117,7 @@ function isAuthenticated() {
   return !!getAuthToken();
 }
 
-/**
+/*
  * Obtiene el usuario actual del localStorage
  * @returns {object|null}
  */
@@ -126,7 +126,7 @@ function getCurrentUser() {
   return user ? JSON.parse(user) : null;
 }
 
-/**
+/*
  * Guarda el usuario actual
  * @param {object} user
  */
@@ -134,14 +134,14 @@ function setCurrentUser(user) {
   localStorage.setItem('currentUser', JSON.stringify(user));
 }
 
-/**
+/*
  * Elimina el usuario actual
  */
 function removeCurrentUser() {
   localStorage.removeItem('currentUser');
 }
 
-/**
+/*
  * Cierra sesión completamente
  */
 function logout() {

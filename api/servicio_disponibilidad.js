@@ -23,7 +23,7 @@ const ServicioDisponibilidadAPI = {
     7: 'Domingo'
   },
 
-  /**
+  /*
    * Obtener nombre del día
    * @param {number} diaSemana
    * @returns {string}
@@ -32,7 +32,7 @@ const ServicioDisponibilidadAPI = {
     return this.DIAS_SEMANA[diaSemana] || 'Desconocido';
   },
 
-  /**
+  /*
    * Listar todas las disponibilidades
    * @returns {Promise<array>}
    */
@@ -42,7 +42,7 @@ const ServicioDisponibilidadAPI = {
     });
   },
 
-  /**
+  /*
    * Obtener disponibilidad por ID
    * @param {number} idDisponibilidad - ID de la disponibilidad
    * @returns {Promise<object>}
@@ -53,7 +53,7 @@ const ServicioDisponibilidadAPI = {
     });
   },
 
-  /**
+  /*
    * Obtener disponibilidades de un servicio
    * @param {number} idServicio - ID del servicio
    * @returns {Promise<array>}
@@ -64,7 +64,7 @@ const ServicioDisponibilidadAPI = {
     });
   },
 
-  /**
+  /*
    * Crear una nueva disponibilidad
    * @param {object} disponibilidadData - Datos de disponibilidad
    * @returns {Promise<object>}
@@ -83,7 +83,7 @@ const ServicioDisponibilidadAPI = {
     });
   },
 
-  /**
+  /*
    * Actualizar una disponibilidad
    * @param {number} idDisponibilidad - ID de la disponibilidad
    * @param {object} disponibilidadData - Datos actualizados
@@ -108,7 +108,7 @@ const ServicioDisponibilidadAPI = {
     });
   },
 
-  /**
+  /*
    * Eliminar una disponibilidad
    * @param {number} idDisponibilidad - ID de la disponibilidad
    * @returns {Promise<object>}
@@ -119,7 +119,7 @@ const ServicioDisponibilidadAPI = {
     });
   },
 
-  /**
+  /*
    * Formatear hora (HH:MM:SS -> HH:MM)
    * @param {string} hora
    * @returns {string}
@@ -129,7 +129,7 @@ const ServicioDisponibilidadAPI = {
     return hora.substring(0, 5);
   },
 
-  /**
+  /*
    * Formatear disponibilidad para mostrar
    * @param {object} disponibilidad
    * @returns {string}
@@ -141,7 +141,7 @@ const ServicioDisponibilidadAPI = {
     return `${dia}: ${horaInicio} - ${horaFin}`;
   },
 
-  /**
+  /*
    * Agrupar disponibilidad por día
    * @param {array} disponibilidades
    * @returns {object}

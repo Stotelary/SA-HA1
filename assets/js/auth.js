@@ -53,15 +53,16 @@ document.addEventListener('DOMContentLoaded', () => {
       const email = document.getElementById('email').value;
       const password = document.getElementById('password').value;
       const submitBtn = loginForm.querySelector('button[type="submit"]');
-      
+
+      console.log(email, password);
       // Deshabilitar botón mientras procesa
       submitBtn.disabled = true;
       submitBtn.textContent = 'Iniciando sesión...';
 
       try {
         // Llamada a la API de login
-        const response = await window.UsuariosAPI.login(email, password);
-        
+        const response = await UsuariosAPI.login(email, password);
+        console.log(response);
         showToast('Inicio de sesión exitoso', 'success');
         setTimeout(() => {
           window.location.href = 'perfil.html';

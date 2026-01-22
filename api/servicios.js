@@ -20,7 +20,7 @@ const ServiciosAPI = {
     AMBOS: 3
   },
 
-  /**
+  /*
    * Obtener texto de modalidad
    * @param {number} modalidad
    * @returns {string}
@@ -34,7 +34,7 @@ const ServiciosAPI = {
     }
   },
 
-  /**
+  /*
    * Listar todos los servicios
    * @returns {Promise<array>}
    */
@@ -44,7 +44,7 @@ const ServiciosAPI = {
     });
   },
 
-  /**
+  /*
    * Obtener un servicio por ID
    * @param {number} idServicio - ID del servicio
    * @returns {Promise<object>}
@@ -55,7 +55,7 @@ const ServiciosAPI = {
     });
   },
 
-  /**
+  /*
    * Crear un nuevo servicio
    * @param {object} servicioData - Datos del servicio
    * @returns {Promise<object>}
@@ -75,7 +75,7 @@ const ServiciosAPI = {
     });
   },
 
-  /**
+  /*
    * Actualizar un servicio
    * @param {number} idServicio - ID del servicio
    * @param {object} servicioData - Datos actualizados
@@ -95,7 +95,7 @@ const ServiciosAPI = {
     });
   },
 
-  /**
+  /*
    * Eliminar un servicio
    * @param {number} idServicio - ID del servicio
    * @returns {Promise<object>}
@@ -106,7 +106,7 @@ const ServiciosAPI = {
     });
   },
 
-  /**
+  /*
    * Buscar servicios con filtros
    * @param {object} filtros - Filtros de búsqueda
    * @returns {Promise<array>}
@@ -130,7 +130,7 @@ const ServiciosAPI = {
     });
   },
 
-  /**
+  /*
    * Obtener servicios por modalidad
    * @param {number} modalidad
    * @returns {Promise<array>}
@@ -141,7 +141,7 @@ const ServiciosAPI = {
     });
   },
 
-  /**
+  /*
    * Obtener servicios de un usuario/prestador
    * @param {number} idUsuario - ID del usuario
    * @returns {Promise<array>}
@@ -152,7 +152,7 @@ const ServiciosAPI = {
     });
   },
 
-  /**
+  /*
    * Formatear precio a moneda chilena
    * @param {number} precio
    * @returns {string}

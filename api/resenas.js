@@ -21,7 +21,7 @@ const apiRequest = async (url, options) => {
 };
 
 const ResenasAPI = {
-  /**
+  /*
    * Listar todas las reseñas
    * @returns {Promise<array>}
    */
@@ -31,7 +31,7 @@ const ResenasAPI = {
     });
   },
 
-  /**
+  /*
    * Obtener reseña por ID
    * @param {number} idResena - ID de la reseña
    * @returns {Promise<object>}
@@ -42,7 +42,7 @@ const ResenasAPI = {
     });
   },
 
-  /**
+  /*
    * Obtener reseña por ID de contratación
    * @param {number} idContratacion
    * @returns {Promise<object>}
@@ -53,7 +53,7 @@ const ResenasAPI = {
     });
   },
 
-  /**
+  /*
    * Obtener reseñas de un servicio (a través de contrataciones)
    * @param {number} idServicio - ID del servicio
    * @returns {Promise<array>}
@@ -64,7 +64,7 @@ const ResenasAPI = {
     });
   },
 
-  /**
+  /*
    * Obtener reseñas de un usuario (a través de contrataciones)
    * @param {number} idUsuario - ID del usuario
    * @returns {Promise<array>}
@@ -75,7 +75,7 @@ const ResenasAPI = {
     });
   },
 
-  /**
+  /*
    * Crear una nueva reseña
    * @param {object} resenaData - Datos de la reseña
    * @returns {Promise<object>}
@@ -98,7 +98,7 @@ const ResenasAPI = {
     });
   },
 
-  /**
+  /*
    * Actualizar una reseña
    * @param {number} idResena - ID de la reseña
    * @param {object} resenaData - Datos actualizados
@@ -123,7 +123,7 @@ const ResenasAPI = {
     });
   },
 
-  /**
+  /*
    * Eliminar una reseña
    * @param {number} idResena - ID de la reseña
    * @returns {Promise<object>}
@@ -134,7 +134,7 @@ const ResenasAPI = {
     });
   },
 
-  /**
+  /*
    * Obtener estadísticas de reseñas de un servicio
    * @param {number} idServicio
    * @returns {Promise<object>}
@@ -145,7 +145,7 @@ const ResenasAPI = {
     });
   },
 
-  /**
+  /*
    * Generar HTML de estrellas para mostrar calificación
    * @param {number} calificacion
    * @returns {string}
@@ -165,7 +165,7 @@ const ResenasAPI = {
     return html;
   },
 
-  /**
+  /*
    * Calcular promedio de calificaciones
    * @param {array} resenas
    * @returns {number}
@@ -177,7 +177,7 @@ const ResenasAPI = {
     return (suma / resenas.length).toFixed(1);
   },
 
-  /**
+  /*
    * Formatear fecha de reseña
    * @param {string} fecha
    * @returns {string}
