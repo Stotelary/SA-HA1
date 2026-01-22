@@ -57,7 +57,7 @@ const UsuariosAPI = {
    * @returns {Promise<object>}
    */
   async login(email, password) {
-    const response = await apiRequest('/api/auth/login', {
+    const response = await apiRequest('/auth/login', {
       method: 'POST',
       body: JSON.stringify({ email, password })
     });
