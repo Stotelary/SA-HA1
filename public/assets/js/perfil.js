@@ -49,6 +49,7 @@ async function loadUserData() {
   } catch (error) {
     // Si falla, usar datos del localStorage
     console.log("Usuario recibido en perfil:", user);
+    debugger;
     displayUserData(user);
   }
 }
