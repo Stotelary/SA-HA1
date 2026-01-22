@@ -40,7 +40,7 @@ const UsuariosAPI = {
       email: userData.email,
       direccion: userData.direccion || '',
       telefono: userData.telefono || '',
-      password: userData.password,
+      password_hash: userData.password_hash,
       prestador: userData.prestador ? 1 : 0
     };
 
@@ -56,11 +56,11 @@ const UsuariosAPI = {
     @param {string} password
     @returns {Promise<object>}
    */
-  async login(email, password) {
+  async login(email, password_hash) {
     console.log("funcion login");
     const response = await apiRequest('/api/auth/login', {
       method: 'POST',
-      body: JSON.stringify({ email, password })
+      body: JSON.stringify({ email, password_hash })
     });
 
     // Si el login es exitoso, guardar token y usuario
@@ -108,7 +108,7 @@ const UsuariosAPI = {
     if (userData.email) payload.email = userData.email;
     if (userData.direccion !== undefined) payload.direccion = userData.direccion;
     if (userData.telefono !== undefined) payload.telefono = userData.telefono;
-    if (userData.password) payload.password = userData.password;
+    if (userData.password_hash) payload.password_hash = userData.password_hash;
     if (userData.prestador !== undefined) payload.prestador = userData.prestador ? 1 : 0;
 
     const response = await apiRequest(`/api/usuarios/${idUsuario}`, {
