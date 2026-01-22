@@ -7,12 +7,14 @@
 
 // Verificar autenticación
 function checkAuth() {
-  const currentUser = window.localStorage.getItem('currentUser');
-  if (!currentUser) {
+  const token = localStorage.getItem('authToken');
+  if (!token) {
     window.location.href = 'login.html';
     return null;
   }
-  return JSON.parse(currentUser);
+
+  const user = localStorage.getItem('currentUser');
+  return user ? JSON.parse(user) : null;
 }
 
 // Mostrar toast
