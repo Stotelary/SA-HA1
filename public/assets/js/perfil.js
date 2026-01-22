@@ -6,6 +6,7 @@
 // Campos de resena en BD: id_resena, id_contratacion, calificacion, comentario, fecha
 
 // Verificar autenticación
+console.log("perfil.js cargado");
 function checkAuth() {
   const token = localStorage.getItem('authToken');
   if (!token) {
@@ -49,7 +50,6 @@ async function loadUserData() {
   } catch (error) {
     // Si falla, usar datos del localStorage
     console.log("Usuario recibido en perfil:", user);
-    debugger;
     displayUserData(user);
   }
 }
