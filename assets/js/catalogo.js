@@ -1,25 +1,127 @@
 // ===========================
 // CATALOG PAGE JAVASCRIPT
 // ===========================
+// Campos de servicio en BD: id_servicio, id_usuario, nombre, descripcion, precio, modalidad (1=presencial, 2=online, 3=ambos), fecha_creacion
+
+const ServiciosAPI = {
+  getAll: async () => {
+    // Placeholder implementation
+    return [];
+  },
+  formatPrecio: (price) => {
+    // Placeholder implementation
+    return price;
+  }
+};
+
+const ServicioImagenAPI = {
+  getByServicio: async (id) => {
+    // Placeholder implementation
+    return [];
+  }
+};
+
+const ResenasAPI = {
+  getByServicio: async (id) => {
+    // Placeholder implementation
+    return [];
+  },
+  calcularPromedio: (resenas) => {
+    // Placeholder implementation
+    return 0;
+  }
+};
 
 ;(() => {
-  let allServices = []
-  let filteredServices = []
-  let currentPage = 1
-  const servicesPerPage = 9
+  let allServices = [];
+  let filteredServices = [];
+  let currentPage = 1;
+  const servicesPerPage = 9;
 
   // ===========================
-  // LOAD SERVICES FROM JSON
+  // LOAD SERVICES FROM API
   // ===========================
   async function loadServices() {
     try {
-      const response = await fetch("data/servicios.json")
-      allServices = await response.json()
-      filteredServices = [...allServices]
-      renderServices()
-      updateResultsCount()
+      // Intentar cargar desde el backend
+      const serviciosBackend = await ServiciosAPI.getAll();
+      
+      // Mapear campos del backend a los esperados por el frontend
+      allServices = await Promise.all(serviciosBackend.map(async (service) => {
+        // Obtener imagen del servicio
+        let imagenUrl = 'assets/images/placeholder-service.jpg';
+        try {
+          const imagenes = await ServicioImagenAPI.getByServicio(service.id_servicio);
+          if (Array.isArray(imagenes) && imagenes.length > 0) {
+            imagenes.sort((a, b) => a.orden - b.orden);
+            imagenUrl = imagenes[0].imagen_url;
+          }
+        } catch (e) {}
+
+        // Obtener calificación promedio
+        let rating = 4.5;
+        try {
+          const resenas = await ResenasAPI.getByServicio(service.id_servicio);
+          if (Array.isArray(resenas) && resenas.length > 0) {
+            rating = parseFloat(ResenasAPI.calcularPromedio(resenas));
+          }
+        } catch (e) {}
+
+        return {
+          id: service.id_servicio,
+          name: service.nombre,
+          description: service.descripcion,
+          price: parseFloat(service.precio),
+          // Modalidad: 1=presencial, 2=online, 3=ambos
+          type: getTypeFromModalidad(service.modalidad),
+          modalidad: service.modalidad,
+          rating: rating,
+          image: imagenUrl,
+          id_usuario: service.id_usuario
+        };
+      }));
+
+      filteredServices = [...allServices];
+      renderServices();
+      updateResultsCount();
     } catch (error) {
-      showError("Error al cargar los servicios. Por favor, intenta de nuevo más tarde.")
+      // Fallback: cargar desde JSON local
+      loadServicesFromLocal();
+    }
+  }
+
+  // Convertir modalidad numérica a texto
+  function getTypeFromModalidad(modalidad) {
+    switch (parseInt(modalidad)) {
+      case 1: return 'presencial';
+      case 2: return 'online';
+      case 3: return 'ambos';
+      default: return 'online';
+    }
+  }
+
+  // Cargar servicios desde archivo local (fallback)
+  async function loadServicesFromLocal() {
+    try {
+      const response = await fetch('data/servicios.json');
+      const serviciosLocal = await response.json();
+      
+      allServices = serviciosLocal.map(service => ({
+        id: service.id || service.id_servicio,
+        name: service.nombre || service.name,
+        description: service.descripcion || service.description,
+        price: parseFloat(service.precio || service.price),
+        type: service.tipo || service.type || getTypeFromModalidad(service.modalidad),
+        category: service.categoria || service.category,
+        rating: service.calificacion || service.rating || 4.5,
+        image: service.imagen || service.image || 'assets/images/placeholder-service.jpg'
+      }));
+
+      filteredServices = [...allServices];
+      renderServices();
+      updateResultsCount();
+    } catch (error) {
+      showError('Error al cargar los servicios. Por favor, intenta de nuevo más tarde.');
     }
   }
 
@@ -27,10 +129,12 @@
   // RENDER SERVICES
   // ===========================
   function renderServices() {
-    const grid = document.getElementById("servicesGrid")
-    const startIndex = (currentPage - 1) * servicesPerPage
-    const endIndex = startIndex + servicesPerPage
-    const servicesToShow = filteredServices.slice(startIndex, endIndex)
+    const grid = document.getElementById('servicesGrid');
+    if (!grid) return;
+
+    const startIndex = (currentPage - 1) * servicesPerPage;
+    const endIndex = startIndex + servicesPerPage;
+    const servicesToShow = filteredServices.slice(startIndex, endIndex);
 
     if (servicesToShow.length === 0) {
       grid.innerHTML = `
@@ -42,19 +146,18 @@
           <h3 class="no-results__title">No se encontraron servicios</h3>
           <p class="no-results__text">Intenta ajustar los filtros para ver más resultados</p>
         </div>
-      `
-      document.getElementById("pagination").innerHTML = ""
-      return
+      `;
+      const pagination = document.getElementById('pagination');
+      if (pagination) pagination.innerHTML = '';
+      return;
     }
 
-    grid.innerHTML = servicesToShow
-      .map(
-        (service) => `
+    grid.innerHTML = servicesToShow.map(service => `
       <div class="catalog-service-card">
-        <img src="${service.image}" alt="${service.name}" class="catalog-service-card__image">
+        <img src="${service.image}" alt="${service.name}" class="catalog-service-card__image" onerror="this.src='assets/images/placeholder-service.jpg'">
         <div class="catalog-service-card__content">
           <div class="catalog-service-card__header">
-            <span class="catalog-service-card__category">${getCategoryName(service.category)}</span>
+            <span class="catalog-service-card__category">${getTypeName(service.type)}</span>
             <div class="catalog-service-card__rating">
               <svg viewBox="0 0 24 24" fill="currentColor">
                 <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
@@ -65,234 +168,231 @@
           <h3 class="catalog-service-card__title">${service.name}</h3>
           <p class="catalog-service-card__description">${service.description}</p>
           <div class="catalog-service-card__footer">
-            <span class="catalog-service-card__price">Desde $${service.price.toLocaleString("es-CL")}</span>
+            <span class="catalog-service-card__price">${ServiciosAPI.formatPrecio(service.price)}</span>
             <span class="catalog-service-card__type">${getTypeName(service.type)}</span>
           </div>
-          <a href="servicio.html" class="btn btn--outline btn--full catalog-service-card__button">
+          <a href="servicio.html?id=${service.id}" class="btn btn--outline btn--full catalog-service-card__button">
             Ver Detalles
             <span class="btn__arrow">→</span>
           </a>
         </div>
       </div>
-    `,
-      )
-      .join("")
+    `).join('');
 
-    renderPagination()
+    renderPagination();
   }
 
   // ===========================
   // PAGINATION
   // ===========================
   function renderPagination() {
-    const totalPages = Math.ceil(filteredServices.length / servicesPerPage)
-    const pagination = document.getElementById("pagination")
+    const totalPages = Math.ceil(filteredServices.length / servicesPerPage);
+    const pagination = document.getElementById('pagination');
+    if (!pagination) return;
 
     if (totalPages <= 1) {
-      pagination.innerHTML = ""
-      return
+      pagination.innerHTML = '';
+      return;
     }
 
     let paginationHTML = `
-      <button class="pagination__button" ${currentPage === 1 ? "disabled" : ""} data-page="${currentPage - 1}">
+      <button class="pagination__button" ${currentPage === 1 ? 'disabled' : ''} data-page="${currentPage - 1}">
         ←
       </button>
-    `
+    `;
 
     for (let i = 1; i <= totalPages; i++) {
       if (i === 1 || i === totalPages || (i >= currentPage - 1 && i <= currentPage + 1)) {
         paginationHTML += `
-          <button class="pagination__button ${i === currentPage ? "active" : ""}" data-page="${i}">
+          <button class="pagination__button ${i === currentPage ? 'active' : ''}" data-page="${i}">
             ${i}
           </button>
-        `
+        `;
       } else if (i === currentPage - 2 || i === currentPage + 2) {
-        paginationHTML += `<span class="pagination__ellipsis">...</span>`
+        paginationHTML += `<span class="pagination__ellipsis">...</span>`;
       }
     }
 
     paginationHTML += `
-      <button class="pagination__button" ${currentPage === totalPages ? "disabled" : ""} data-page="${currentPage + 1}">
+      <button class="pagination__button" ${currentPage === totalPages ? 'disabled' : ''} data-page="${currentPage + 1}">
         →
       </button>
-    `
+    `;
 
-    pagination.innerHTML = paginationHTML
+    pagination.innerHTML = paginationHTML;
 
-    // Add event listeners
-    pagination.querySelectorAll(".pagination__button").forEach((button) => {
-      button.addEventListener("click", () => {
-        const page = Number.parseInt(button.dataset.page)
+    pagination.querySelectorAll('.pagination__button').forEach(button => {
+      button.addEventListener('click', () => {
+        const page = parseInt(button.dataset.page);
         if (page && page !== currentPage) {
-          currentPage = page
-          renderServices()
-          window.scrollTo({ top: 0, behavior: "smooth" })
+          currentPage = page;
+          renderServices();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-      })
-    })
+      });
+    });
   }
 
   // ===========================
   // FILTERS
   // ===========================
   function applyFilters() {
-    const searchTerm = document.getElementById("searchFilter").value.toLowerCase()
-    const category = document.getElementById("categoryFilter").value
-    const priceRange = Number.parseInt(document.getElementById("priceRange").value)
-    const rating = Number.parseFloat(document.getElementById("ratingFilter").value)
+    const searchEl = document.getElementById('searchFilter');
+    const categoryEl = document.getElementById('categoryFilter');
+    const priceRangeEl = document.getElementById('priceRange');
+    const ratingEl = document.getElementById('ratingFilter');
 
-    const typeCheckboxes = document.querySelectorAll(".type-filter:checked")
-    const selectedTypes = Array.from(typeCheckboxes).map((cb) => cb.value)
+    const searchTerm = searchEl ? searchEl.value.toLowerCase() : '';
+    const category = categoryEl ? categoryEl.value : '';
+    const priceRange = priceRangeEl ? parseInt(priceRangeEl.value) : 100000;
+    const rating = ratingEl ? parseFloat(ratingEl.value) : 0;
 
-    filteredServices = allServices.filter((service) => {
-      const matchesSearch =
-        service.name.toLowerCase().includes(searchTerm) || service.description.toLowerCase().includes(searchTerm)
-      const matchesCategory = !category || service.category === category
-      const matchesPrice = service.price <= priceRange
-      const matchesRating = service.rating >= rating
-      const matchesType = selectedTypes.length === 0 || selectedTypes.includes(service.type)
+    const typeCheckboxes = document.querySelectorAll('.type-filter:checked');
+    const selectedTypes = Array.from(typeCheckboxes).map(cb => cb.value);
 
-      return matchesSearch && matchesCategory && matchesPrice && matchesRating && matchesType
-    })
+    filteredServices = allServices.filter(service => {
+      const matchesSearch = service.name.toLowerCase().includes(searchTerm) || 
+                           service.description.toLowerCase().includes(searchTerm);
+      const matchesCategory = !category || service.category === category;
+      const matchesPrice = service.price <= priceRange;
+      const matchesRating = service.rating >= rating;
+      const matchesType = selectedTypes.length === 0 || selectedTypes.includes(service.type);
 
-    currentPage = 1
-    renderServices()
-    updateResultsCount()
+      return matchesSearch && matchesCategory && matchesPrice && matchesRating && matchesType;
+    });
+
+    currentPage = 1;
+    renderServices();
+    updateResultsCount();
   }
 
   // ===========================
   // SORTING
   // ===========================
   function sortServices() {
-    const sortBy = document.getElementById("sortSelect").value
+    const sortEl = document.getElementById('sortSelect');
+    const sortBy = sortEl ? sortEl.value : 'relevance';
 
     switch (sortBy) {
-      case "price-asc":
-        filteredServices.sort((a, b) => a.price - b.price)
-        break
-      case "price-desc":
-        filteredServices.sort((a, b) => b.price - a.price)
-        break
-      case "rating":
-        filteredServices.sort((a, b) => b.rating - a.rating)
-        break
-      case "name":
-        filteredServices.sort((a, b) => a.name.localeCompare(b.name))
-        break
+      case 'price-asc':
+        filteredServices.sort((a, b) => a.price - b.price);
+        break;
+      case 'price-desc':
+        filteredServices.sort((a, b) => b.price - a.price);
+        break;
+      case 'rating':
+        filteredServices.sort((a, b) => b.rating - a.rating);
+        break;
+      case 'name':
+        filteredServices.sort((a, b) => a.name.localeCompare(b.name));
+        break;
       default:
-        filteredServices = [...allServices]
-        applyFilters()
-        return
+        filteredServices = [...allServices];
+        applyFilters();
+        return;
     }
 
-    renderServices()
+    renderServices();
   }
 
   // ===========================
   // HELPER FUNCTIONS
   // ===========================
   function updateResultsCount() {
-    document.getElementById("resultsCount").textContent = filteredServices.length
-  }
-
-  function getCategoryName(category) {
-    const categories = {
-      hogar: "Hogar",
-      tecnologia: "Tecnología",
-      educacion: "Educación",
-      entretenimiento: "Entretenimiento",
-      salud: "Salud y Bienestar",
-      creatividad: "Creatividad",
+    const resultsCount = document.getElementById('resultsCount');
+    if (resultsCount) {
+      resultsCount.textContent = filteredServices.length;
     }
-    return categories[category] || category
   }
 
   function getTypeName(type) {
     const types = {
-      online: "Online",
-      presencial: "Presencial",
-      ambos: "Online/Presencial",
-    }
-    return types[type] || type
+      'online': 'Online',
+      'presencial': 'Presencial',
+      'ambos': 'Online/Presencial'
+    };
+    return types[type] || type || 'Online';
   }
 
   function showError(message) {
-    const grid = document.getElementById("servicesGrid")
-    grid.innerHTML = `
-      <div class="no-results">
-        <h3 class="no-results__title">Error</h3>
-        <p class="no-results__text">${message}</p>
-      </div>
-    `
+    const grid = document.getElementById('servicesGrid');
+    if (grid) {
+      grid.innerHTML = `
+        <div class="no-results">
+          <h3 class="no-results__title">Error</h3>
+          <p class="no-results__text">${message}</p>
+        </div>
+      `;
+    }
   }
 
   // ===========================
   // PRICE RANGE DISPLAY
   // ===========================
   function updatePriceDisplay() {
-    const priceRange = document.getElementById("priceRange")
-    const priceValue = document.getElementById("priceValue")
+    const priceRange = document.getElementById('priceRange');
+    const priceValue = document.getElementById('priceValue');
 
-    priceRange.addEventListener("input", (e) => {
-      const value = Number.parseInt(e.target.value)
-      priceValue.textContent = value >= 100000 ? "$100.000+" : `$${value.toLocaleString("es-CL")}`
-    })
+    if (priceRange && priceValue) {
+      priceRange.addEventListener('input', (e) => {
+        const value = parseInt(e.target.value);
+        priceValue.textContent = value >= 100000 ? '$100.000+' : `$${value.toLocaleString('es-CL')}`;
+      });
+    }
   }
 
   // ===========================
   // EVENT LISTENERS
   // ===========================
   function initEventListeners() {
-    // Search filter
-    document.getElementById("searchFilter").addEventListener("input", applyFilters)
+    const searchFilter = document.getElementById('searchFilter');
+    const categoryFilter = document.getElementById('categoryFilter');
+    const priceRange = document.getElementById('priceRange');
+    const ratingFilter = document.getElementById('ratingFilter');
+    const sortSelect = document.getElementById('sortSelect');
+    const clearFilters = document.getElementById('clearFilters');
 
-    // Category filter
-    document.getElementById("categoryFilter").addEventListener("change", applyFilters)
+    if (searchFilter) searchFilter.addEventListener('input', applyFilters);
+    if (categoryFilter) categoryFilter.addEventListener('change', applyFilters);
+    if (priceRange) priceRange.addEventListener('change', applyFilters);
+    if (ratingFilter) ratingFilter.addEventListener('change', applyFilters);
+    if (sortSelect) sortSelect.addEventListener('change', sortServices);
 
-    // Type checkboxes
-    document.querySelectorAll(".type-filter").forEach((checkbox) => {
-      checkbox.addEventListener("change", applyFilters)
-    })
+    document.querySelectorAll('.type-filter').forEach(checkbox => {
+      checkbox.addEventListener('change', applyFilters);
+    });
 
-    // Price range
-    document.getElementById("priceRange").addEventListener("change", applyFilters)
+    if (clearFilters) {
+      clearFilters.addEventListener('click', () => {
+        if (searchFilter) searchFilter.value = '';
+        if (categoryFilter) categoryFilter.value = '';
+        if (priceRange) priceRange.value = 100000;
+        const priceValue = document.getElementById('priceValue');
+        if (priceValue) priceValue.textContent = '$100.000+';
+        if (ratingFilter) ratingFilter.value = '0';
+        if (sortSelect) sortSelect.value = 'relevance';
+        document.querySelectorAll('.type-filter').forEach(cb => cb.checked = false);
 
-    // Rating filter
-    document.getElementById("ratingFilter").addEventListener("change", applyFilters)
-
-    // Sort
-    document.getElementById("sortSelect").addEventListener("change", sortServices)
-
-    // Clear filters
-    document.getElementById("clearFilters").addEventListener("click", () => {
-      document.getElementById("searchFilter").value = ""
-      document.getElementById("categoryFilter").value = ""
-      document.getElementById("priceRange").value = 100000
-      document.getElementById("priceValue").textContent = "$100.000+"
-      document.getElementById("ratingFilter").value = "0"
-      document.getElementById("sortSelect").value = "relevance"
-      document.querySelectorAll(".type-filter").forEach((cb) => (cb.checked = false))
-
-      filteredServices = [...allServices]
-      currentPage = 1
-      renderServices()
-      updateResultsCount()
-    })
+        filteredServices = [...allServices];
+        currentPage = 1;
+        renderServices();
+        updateResultsCount();
+      });
+    }
   }
 
   // ===========================
   // INITIALIZE
   // ===========================
   function init() {
-    updatePriceDisplay()
-    initEventListeners()
-    loadServices()
+    updatePriceDisplay();
+    initEventListeners();
+    loadServices();
   }
 
-  // Start the app
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", init)
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
   } else {
-    init()
+    init();
   }
-})()
+})();

@@ -461,7 +461,7 @@ ul {
 
 .btn--primary {
   background: var(--color-primary);
-  color: white !important;
+  color: white;
 }
 
 .btn--primary:hover {
