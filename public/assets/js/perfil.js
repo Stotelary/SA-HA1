@@ -32,26 +32,12 @@ function showToast(message, type = 'success') {
 // ===========================
 // CARGAR DATOS DEL USUARIO
 // ===========================
-async function loadUserData() {
+function loadUserData() {
   const user = checkAuth();
   if (!user) return;
 
-  try {
-    // Intentar obtener datos actualizados del backend
-    const userData = await fetch(`${API_CONFIG.BASE_URL}/api/usuarios/${user.id_usuario}`)
-      .then(response => response.json());
-    
-    // Actualizar localStorage con datos frescos
-    setCurrentUser(userData);
-    
-    displayUserData(userData);
-
-  
-  } catch (error) {
-    // Si falla, usar datos del localStorage
-    console.log("Usuario recibido en perfil:", user);
-    displayUserData(user);
-  }
+  console.log("Usuario cargado en perfil:", user);
+  displayUserData(user);
 }
 
 // Mostrar datos del usuario en la UI
