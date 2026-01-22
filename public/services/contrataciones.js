@@ -32,7 +32,7 @@ const ContratacionesAPI = {
     }
   },
 
-  /**
+  /*
    * Listar todas las contrataciones
    * @returns {Promise<array>}
    */
@@ -43,7 +43,7 @@ const ContratacionesAPI = {
     });
   },
 
-  /**
+  /*
    * Obtener contratación por ID
    * @param {number} idContratacion - ID de la contratación
    * @returns {Promise<object>}
@@ -55,7 +55,7 @@ const ContratacionesAPI = {
     });
   },
 
-  /**
+  /*
    * Obtener contrataciones de un usuario
    * @param {number} idUsuario - ID del usuario
    * @returns {Promise<array>}
@@ -67,7 +67,7 @@ const ContratacionesAPI = {
     });
   },
 
-  /**
+  /*
    * Obtener contrataciones de un servicio
    * @param {number} idServicio - ID del servicio
    * @returns {Promise<array>}
@@ -79,7 +79,7 @@ const ContratacionesAPI = {
     });
   },
 
-  /**
+  /*
    * Crear una nueva contratación
    * @param {object} contratacionData - Datos de la contratación
    * @returns {Promise<object>}
@@ -100,7 +100,7 @@ const ContratacionesAPI = {
     });
   },
 
-  /**
+  /*
    * Actualizar una contratación
    * @param {number} idContratacion - ID de la contratación
    * @param {object} contratacionData - Datos actualizados

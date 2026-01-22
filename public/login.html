@@ -6,9 +6,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/auth.css">
-    <meta name="description" content="Regístrate en 404 Service">
+    <meta name="description" content="Iniciar sesión en 404 Service">
     <meta name="theme-color" content="#735ac0">
-    <title>Registro - 404 Service</title>
+    <title>Iniciar Sesión - 404 Service</title>
 </head>
 <body>
     <!-- Header -->
@@ -29,24 +29,11 @@
             <div class="auth-container">
                 <div class="auth-card">
                     <div class="auth-card__header">
-                        <h1 class="auth-card__title">Crear Cuenta</h1>
-                        <p class="auth-card__subtitle">Únete a 404 Service y encuentra los mejores servicios</p>
+                        <h1 class="auth-card__title">Iniciar Sesión</h1>
+                        <p class="auth-card__subtitle">Ingresa a tu cuenta de 404 Service</p>
                     </div>
 
-                    <form id="registroForm" class="auth-form">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="nombre" class="form-label">Nombre</label>
-                                <input type="text" id="nombre" name="nombre" class="form-input" 
-                                       placeholder="Juan" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="apellido" class="form-label">Apellido</label>
-                                <input type="text" id="apellido" name="apellido" class="form-input" 
-                                       placeholder="Pérez" required>
-                            </div>
-                        </div>
-
+                    <form id="loginForm" class="auth-form">
                         <div class="form-group">
                             <label for="email" class="form-label">Correo Electrónico</label>
                             <input type="email" id="email" name="email" class="form-input" 
@@ -54,38 +41,11 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="telefono" class="form-label">Teléfono</label>
-                            <input type="tel" id="telefono" name="telefono" class="form-input" 
-                                   placeholder="+56 9 1234 5678" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="direccion" class="form-label">Dirección</label>
-                            <input type="text" id="direccion" name="direccion" class="form-input" 
-                                   placeholder="Calle Principal 123, Santiago" required>
-                        </div>
-
-                        <div class="form-group">
                             <label for="password" class="form-label">Contraseña</label>
                             <div class="password-input">
                                 <input type="password" id="password" name="password" class="form-input" 
-                                       placeholder="••••••••" required minlength="6">
+                                       placeholder="••••••••" required>
                                 <button type="button" class="password-toggle" id="togglePassword">
-                                    <svg class="icon-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                                        <circle cx="12" cy="12" r="3"></circle>
-                                    </svg>
-                                </button>
-                            </div>
-                            <small class="form-hint">Mínimo 6 caracteres</small>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="confirmPassword" class="form-label">Confirmar Contraseña</label>
-                            <div class="password-input">
-                                <input type="password" id="confirmPassword" name="confirmPassword" class="form-input" 
-                                       placeholder="••••••••" required minlength="6">
-                                <button type="button" class="password-toggle" id="toggleConfirmPassword">
                                     <svg class="icon-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                                         <circle cx="12" cy="12" r="3"></circle>
@@ -96,13 +56,14 @@
 
                         <div class="form-group form-checkbox">
                             <label class="checkbox-label">
-                                <input type="checkbox" name="terms" id="terms" required>
-                                <span class="checkbox-text">Acepto los <a href="#" class="auth-link">términos y condiciones</a></span>
+                                <input type="checkbox" name="remember" id="remember">
+                                <span class="checkbox-text">Recordarme</span>
                             </label>
+                            <a href="#" class="forgot-link">¿Olvidaste tu contraseña?</a>
                         </div>
 
                         <button type="submit" class="btn btn--primary btn--full btn--lg">
-                            Crear Cuenta
+                            Iniciar Sesión
                         </button>
                     </form>
 
@@ -129,7 +90,7 @@
                     </div>
 
                     <p class="auth-footer">
-                        ¿Ya tienes cuenta? <a href="login.html" class="auth-link">Inicia Sesión</a>
+                        ¿No tienes cuenta? <a href="registro.html" class="auth-link">Regístrate</a>
                     </p>
                 </div>
             </div>
@@ -141,8 +102,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- API Scripts -->
-    <script src="api/config.js"></script>
-    <script src="api/usuarios.js"></script>
+    <script src="services/config.js"></script>
+    <script src="services/usuarios.js"></script>
     <!-- Main Scripts -->
     <script src="assets/js/auth.js"></script>
 </body>
