@@ -51,17 +51,17 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       
       const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
+      const password_hash = document.getElementById('password').value;
       const submitBtn = loginForm.querySelector('button[type="submit"]');
 
-      console.log(email, password);
+      console.log(email, password_hash);
       // Deshabilitar botón mientras procesa
       submitBtn.disabled = true;
       submitBtn.textContent = 'Iniciando sesión...';
 
       try {
         // Llamada a la API de login
-        const response = await UsuariosAPI.login(email, password);
+        const response = await UsuariosAPI.login(email, password_hash);
         console.log(response);
         showToast('Inicio de sesión exitoso', 'success');
         setTimeout(() => {
@@ -89,19 +89,19 @@ document.addEventListener('DOMContentLoaded', () => {
       const email = document.getElementById('email').value;
       const telefono = document.getElementById('telefono').value;
       const direccion = document.getElementById('direccion').value;
-      const password = document.getElementById('password').value;
+      const password_hash = document.getElementById('password').value;
       const confirmPassword = document.getElementById('confirmPassword').value;
       const prestador = document.getElementById('prestador')?.checked || false;
       const submitBtn = registroForm.querySelector('button[type="submit"]');
 
       // Validar contraseñas
-      if (password !== confirmPassword) {
+      if (password_hash !== confirmPassword) {
         showToast('Las contraseñas no coinciden', 'error');
         return;
       }
 
       // Validar longitud de contraseña
-      if (password.length < 6) {
+      if (password_hash.length < 6) {
         showToast('La contraseña debe tener al menos 6 caracteres', 'error');
         return;
       }
@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
           email: email,
           telefono: telefono || '',
           direccion: direccion || '',
-          password: password,
+          password_hash: password_hash,
           prestador: prestador
         });
 
