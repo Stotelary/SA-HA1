@@ -38,7 +38,7 @@ async function loadUserData() {
 
   try {
     // Intentar obtener datos actualizados del backend
-    const userData = await fetch(`/api/usuarios/${user.id_usuario}`)
+    const userData = await fetch(`${API_CONFIG.BASE_URL}/api/usuarios/${user.id_usuario}`)
       .then(response => response.json());
     
     // Actualizar localStorage con datos frescos
