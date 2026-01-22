@@ -10,7 +10,7 @@
 // 
 // NOTA: Las reseñas están vinculadas a contrataciones, no directamente a servicios
 
-const apiRequest = async (url, options) => {
+/*const apiRequest = async (url, options) => {
   // Implementación de apiRequest aquí
   // Esto es un ejemplo ficticio y debe ser reemplazado con la implementación real
   const response = await fetch(url, options);
@@ -19,7 +19,7 @@ const apiRequest = async (url, options) => {
   }
   return await response.json();
 };
-
+*/
 const ResenasAPI = {
   /*
    * Listar todas las reseñas
