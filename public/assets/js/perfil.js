@@ -44,6 +44,8 @@ async function loadUserData() {
     setCurrentUser(userData);
     
     displayUserData(userData);
+
+    console.log('userdata:', userData);
   } catch (error) {
     // Si falla, usar datos del localStorage
     displayUserData(user);
