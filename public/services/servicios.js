@@ -10,7 +10,7 @@
 // - modalidad (tinyint: 1=presencial, 2=online, 3=ambos)
 // - fecha_creacion (timestamp)
 
-const apiRequest = require('./apiRequest'); // Assuming apiRequest is a module that needs to be imported
+//const apiRequest = require('./apiRequest'); // Assuming apiRequest is a module that needs to be imported
 
 const ServiciosAPI = {
   // Constantes para modalidad
