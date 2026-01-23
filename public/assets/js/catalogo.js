@@ -3,35 +3,14 @@
 // ===========================
 // Campos de servicio en BD: id_servicio, id_usuario, nombre, descripcion, precio, modalidad (1=presencial, 2=online, 3=ambos), fecha_creacion
 
-const ServiciosAPI = {
-  getAll: async () => {
-    // Placeholder implementation
-    return [];
-  },
-  formatPrecio: (price) => {
-    // Placeholder implementation
-    return price;
-  }
-};
+const ServiciosAPI = window.ServiciosAPI;
+const ServicioImagenAPI = window.ServicioImagenAPI;
 
-const ServicioImagenAPI = {
-  getByServicio: async (id) => {
-    // Placeholder implementation
-    return [];
-  }
+const ResenasAPI = window.ResenasAPI || {
+  getByServicio: async () => [],
+  calcularPromedio: () => 0
 };
-
-const ResenasAPI = {
-  getByServicio: async (id) => {
-    // Placeholder implementation
-    return [];
-  },
-  calcularPromedio: (resenas) => {
-    // Placeholder implementation
-    return 0;
-  }
-};
-
+console.log("catalogo.js cargado ✅");
 ;(() => {
   let allServices = [];
   let filteredServices = [];
@@ -42,9 +21,13 @@ const ResenasAPI = {
   // LOAD SERVICES FROM API
   // ===========================
   async function loadServices() {
+    console.log("loadServices() corriendo ✅");
+
     try {
       // Intentar cargar desde el backend
       const serviciosBackend = await ServiciosAPI.getAll();
+      console.log("serviciosBackend:", serviciosBackend);
+
       
       // Mapear campos del backend a los esperados por el frontend
       allServices = await Promise.all(serviciosBackend.map(async (service) => {
@@ -85,9 +68,11 @@ const ResenasAPI = {
       renderServices();
       updateResultsCount();
     } catch (error) {
-      // Fallback: cargar desde JSON local
-      loadServicesFromLocal();
-    }
+  console.error("Error cargando servicios desde backend:", error);
+  showError("No se pudieron cargar servicios desde el backend. Revisa Network → /api/servicios");
+  // si quieres fallback, déjalo pero con log:
+  // await loadServicesFromLocal();
+}
   }
 
   // Convertir modalidad numérica a texto
@@ -385,6 +370,7 @@ const ResenasAPI = {
   // INITIALIZE
   // ===========================
   function init() {
+    console.log("init() corriendo ✅");
     updatePriceDisplay();
     initEventListeners();
     loadServices();
