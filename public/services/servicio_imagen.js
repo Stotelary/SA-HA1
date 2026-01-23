@@ -9,19 +9,19 @@
 
 const ServicioImagenAPI = {
   async getAll() {
-    return await window.apiRequest('/api/servicio-imagen', {
+    return await window.apiRequest('/api/imagenes', {
       method: 'GET'
     });
   },
 
   async getById(idImagen) {
-    return await window.apiRequest(`/api/servicio-imagen/${idImagen}`, {
+    return await window.apiRequest(`/api/imagenes/${idImagen}`, {
       method: 'GET'
     });
   },
 
   async getByServicio(idServicio) {
-    return await window.apiRequest(`/api/servicio-imagen/servicio/${idServicio}`, {
+    return await window.apiRequest(`/api/imagenes/servicio/${idServicio}`, {
       method: 'GET'
     });
   },
@@ -33,7 +33,7 @@ const ServicioImagenAPI = {
       orden: parseInt(imagenData.orden, 10) || 1
     };
 
-    return await window.apiRequest('/api/servicio-imagen', {
+    return await window.apiRequest('/api/imagenes', {
       method: 'POST',
       body: JSON.stringify(payload)
     });
@@ -45,14 +45,14 @@ const ServicioImagenAPI = {
     if (imagenData.imagen_url) payload.imagen_url = imagenData.imagen_url;
     if (imagenData.orden !== undefined) payload.orden = parseInt(imagenData.orden, 10);
 
-    return await window.apiRequest(`/api/servicio-imagen/${idImagen}`, {
+    return await window.apiRequest(`/api/imagenes/${idImagen}`, {
       method: 'PUT',
       body: JSON.stringify(payload)
     });
   },
 
   async delete(idImagen) {
-    return await window.apiRequest(`/api/servicio-imagen/${idImagen}`, {
+    return await window.apiRequest(`/api/imagenes/${idImagen}`, {
       method: 'DELETE'
     });
   },
