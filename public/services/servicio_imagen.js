@@ -21,7 +21,7 @@ const ServicioImagenAPI = {
   },
 
   async getByServicio(idServicio) {
-    return await window.apiRequest(`/api/imagenes/servicio/${idServicio}`, {
+    return await window.apiRequest(`/api/imagenes/${idServicio}`, {
       method: 'GET'
     });
   },
