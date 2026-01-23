@@ -50,16 +50,14 @@ const UsuariosAPI = {
       },
       body: JSON.stringify({
         email: email,
-        password: password
+        password_hash: password   // 👈 CLAVE
       })
     });
 
-    // Guardar token
     if (response.token) {
       setAuthToken(response.token);
     }
 
-    // Guardar usuario en localStorage
     setCurrentUser({
       nombre: response.nombre,
       email: response.email,
