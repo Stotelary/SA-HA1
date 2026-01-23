@@ -34,19 +34,17 @@ function showToast(message, type = 'success') {
 // ===========================
 async function loadUserData() {
   const basicUser = checkAuth();
-  if (!basicUser) return;
+  if (!basicUser) return null;
 
   try {
-    const fullUser = await UsuariosAPI.getProfile();   // ← viene con id_usuario
-    setCurrentUser(fullUser);                          // ← IMPORTANTÍSIMO
+    const fullUser = await UsuariosAPI.getProfile();
+    window.setCurrentUser(fullUser);
     displayUserData(fullUser);
-
-    // AHORA sí puedes cargar contrataciones
-    loadContrataciones(fullUser.id_usuario);
-
+    return fullUser;
   } catch (error) {
-    console.warn("Usando datos básicos");
+    console.warn("Usando datos básicos", error);
     displayUserData(basicUser);
+    return basicUser;
   }
 }
 
@@ -92,8 +90,9 @@ async function loadServices() {
 
   try {
     // Obtener contrataciones del usuario desde el backend
-    const contrataciones = await fetch(`/api/contrataciones/${user.id_usuario}`)
-      .then(response => response.json());
+    const contrataciones = await apiRequest(`/api/contrataciones/${user.id_usuario}`, {
+      method: 'GET'
+    });
     
     if (!Array.isArray(contrataciones)) {
       throw new Error('Formato de respuesta inválido');
@@ -135,13 +134,11 @@ async function enrichContrataciones(contrataciones) {
   for (const contratacion of contrataciones) {
     try {
       // Obtener datos del servicio
-      const servicio = await fetch(`/api/servicios/${contratacion.id_servicio}`)
-        .then(response => response.json());
+      const servicio = await apiRequest(`/api/servicios/${contratacion.id_servicio}`, { method: 'GET' });
       contratacion.servicio = servicio;
       
       // Obtener imagen del servicio
-      const imagenes = await fetch(`/api/servicios/${contratacion.id_servicio}/imagenes`)
-        .then(response => response.json());
+      const imagenes = await apiRequest(`/api/servicios/${contratacion.id_servicio}/imagenes`, { method: 'GET' });
       if (Array.isArray(imagenes) && imagenes.length > 0) {
         imagenes.sort((a, b) => a.orden - b.orden);
         contratacion.imagen_url = imagenes[0].imagen_url;
@@ -150,8 +147,7 @@ async function enrichContrataciones(contrataciones) {
       // Verificar si tiene reseña
       if (contratacion.estado === 'REALIZADO') {
         try {
-          const resena = await fetch(`/api/resenas/${contratacion.id_contratacion}`)
-            .then(response => response.json());
+          const resena = await apiRequest(`/api/resenas/${contratacion.id_contratacion}`, { method: 'GET' });
           contratacion.tieneResena = !!resena;
           contratacion.resena = resena;
         } catch (e) {
@@ -325,24 +321,14 @@ async function updateProfile(userData) {
 // ===========================
 // LOGOUT
 // ===========================
-function setCurrentUser(user) {
-  window.localStorage.setItem('currentUser', JSON.stringify(user));
-}
 
-function logout() {
-  window.localStorage.removeItem('currentUser');
-  window.location.href = 'login.html';
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  loadUserData();
-  loadServices();
+document.addEventListener('DOMContentLoaded', async () => {
+  await loadUserData();     // primero carga/guarda usuario completo
+  await loadServices();     // después carga contrataciones
   setupTabs();
 
   const logoutBtn = document.getElementById('logoutBtn');
-  if (logoutBtn) {
-    logoutBtn.addEventListener('click', () => {
-      logout();
-    });
-  }
+  if (logoutBtn) logoutBtn.addEventListener('click', () => {
+    window.logout();
+  });
 });
