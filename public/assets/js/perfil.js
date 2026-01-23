@@ -303,15 +303,11 @@ async function updateProfile(userData) {
   if (!user) return;
 
   try {
-    const updatedUser = await fetch(`/api/users/${user.id_usuario}`, {
+    const updatedUser = await apiRequest(`/api/usuarios/${user.id_usuario}`, {
       method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json'
-      },
       body: JSON.stringify(userData)
-    }).then(response => response.json());
-    setCurrentUser(updatedUser);
-    showToast('Perfil actualizado exitosamente', 'success');
+    });
+    window.setCurrentUser(updatedUser);
     displayUserData(updatedUser);
   } catch (error) {
     showToast(error.message || 'Error al actualizar perfil', 'error');
