@@ -49,7 +49,7 @@ const ResenasAPI = {
       // Mapear campos del backend a los esperados por el frontend
       allServices = await Promise.all(serviciosBackend.map(async (service) => {
         // Obtener imagen del servicio
-        let imagenUrl = 'assets/images/placeholder-service.jpg';
+        let imagenUrl = 'assets/img/placeholder-service.jpg';
         try {
           const imagenes = await ServicioImagenAPI.getByServicio(service.id_servicio);
           if (Array.isArray(imagenes) && imagenes.length > 0) {
@@ -114,7 +114,7 @@ const ResenasAPI = {
         type: service.tipo || service.type || getTypeFromModalidad(service.modalidad),
         category: service.categoria || service.category,
         rating: service.calificacion || service.rating || 4.5,
-        image: service.imagen || service.image || 'assets/images/placeholder-service.jpg'
+        image: service.imagen || service.image || 'assets/img/placeholder-service.jpg'
       }));
 
       filteredServices = [...allServices];
@@ -154,7 +154,7 @@ const ResenasAPI = {
 
     grid.innerHTML = servicesToShow.map(service => `
       <div class="catalog-service-card">
-        <img src="${service.image}" alt="${service.name}" class="catalog-service-card__image" onerror="this.src='assets/images/placeholder-service.jpg'">
+        <img src="${service.image}" alt="${service.name}" class="catalog-service-card__image" onerror="this.src='assets/img/placeholder-service.jpg'">
         <div class="catalog-service-card__content">
           <div class="catalog-service-card__header">
             <span class="catalog-service-card__category">${getTypeName(service.type)}</span>

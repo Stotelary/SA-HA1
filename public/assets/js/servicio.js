@@ -121,7 +121,7 @@
     carouselImages.innerHTML = imagenes.map((img, index) => `
       <img src="${img.imagen_url}" alt="Imagen del servicio" 
            class="carousel__image ${index === 0 ? 'active' : ''}"
-           onerror="this.src='assets/images/placeholder-service.jpg'">
+           onerror="this.src='assets/img/placeholder-service.jpg'">
     `).join('');
   }
 
@@ -281,7 +281,7 @@
 
     reviewDiv.innerHTML = `
       <div class="review__header">
-        <img src="assets/images/avatar-default.jpg" alt="${nombreUsuario}" class="review__avatar" onerror="this.src='assets/images/avatar-default.jpg'">
+        <img src="assets/img/avatar-default.jpg" alt="${nombreUsuario}" class="review__avatar" onerror="this.src='assets/img/avatar-default.jpg'">
         <div class="review__info">
           <div class="review__name">${nombreUsuario}</div>
           <div class="review__rating">

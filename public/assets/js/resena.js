@@ -112,7 +112,7 @@ async function loadServiceInfo() {
     const servicio = await ServiciosAPI.getById(contratacion.id_servicio);
     
     // Obtener imagen del servicio
-    let imagenUrl = 'assets/images/placeholder-service.jpg';
+    let imagenUrl = 'assets/img/placeholder-service.jpg';
     try {
       const imagenes = await ServicioImagenAPI.getByServicio(contratacion.id_servicio);
       if (Array.isArray(imagenes) && imagenes.length > 0) {
@@ -162,9 +162,9 @@ function displayServiceInfo(servicio) {
   const serviceDate = document.getElementById('serviceDate');
 
   if (serviceImage) {
-    serviceImage.src = servicio.imagen || 'assets/images/placeholder-service.jpg';
+    serviceImage.src = servicio.imagen || 'assets/img/placeholder-service.jpg';
     serviceImage.onerror = function() {
-      this.src = 'assets/images/placeholder-service.jpg';
+      this.src = 'assets/img/placeholder-service.jpg';
     };
   }
   if (serviceName) {

@@ -241,7 +241,7 @@ function createServiceCard(service, showReviewButton) {
     : 'Sin fecha';
   
   // Imagen del servicio
-  const imagen = service.imagen_url || service.servicio?.imagen_url || 'assets/images/placeholder-service.jpg';
+  const imagen = service.imagen_url || service.servicio?.imagen_url || 'assets/img/placeholder-service.jpg';
   
   // Nombre del servicio
   const nombre = service.servicio?.nombre || service.nombre || 'Servicio';
@@ -255,7 +255,7 @@ function createServiceCard(service, showReviewButton) {
 
   return `
     <div class="service-card">
-      <img src="${imagen}" alt="${nombre}" class="service-image" onerror="this.src='assets/images/placeholder-service.jpg'">
+      <img src="${imagen}" alt="${nombre}" class="service-image" onerror="this.src='assets/img/placeholder-service.jpg'">
       <div class="service-details">
         <div class="service-header">
           <h3 class="service-title">${nombre}</h3>
