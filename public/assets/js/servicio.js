@@ -26,63 +26,27 @@
   // ===========================
   // CARGAR DATOS DEL SERVICIO
   // ===========================
-  const ServiciosAPI = {
-    getById: async (id) => {
-      // Implementación de la función getById
-    },
-    formatPrecio: (precio) => {
-      // Implementación de la función formatPrecio
-    },
-    getModalidadTexto: (modalidad) => {
-      // Implementación de la función getModalidadTexto
-    }
-  };
+  const ServiciosAPI = window.ServiciosAPI;
+  const ServicioImagenAPI = window.ServicioImagenAPI;
+  const ServicioDisponibilidadAPI = window.ServicioDisponibilidadAPI;
+  const ResenasAPI = window.ResenasAPI;
+  const ContratacionesAPI = window.ContratacionesAPI;
+  const getCurrentUser = window.getCurrentUser;
 
-  const ServicioImagenAPI = {
-    getByServicio: async (id) => {
-      // Implementación de la función getByServicio
-    }
-  };
+  // Si falta algo, lo avisamos en consola (y evitamos crashear)
+  const missing = [];
+  if (!ServiciosAPI) missing.push("ServiciosAPI");
+  if (!ServicioImagenAPI) missing.push("ServicioImagenAPI");
+  if (!ServicioDisponibilidadAPI) missing.push("ServicioDisponibilidadAPI");
+  if (!ResenasAPI) missing.push("ResenasAPI");
+  if (!ContratacionesAPI) missing.push("ContratacionesAPI");
+  if (!getCurrentUser) missing.push("getCurrentUser");
 
-  const ServicioDisponibilidadAPI = {
-    getByServicio: async (id) => {
-      // Implementación de la función getByServicio
-    },
-    agruparPorDia: (disponibilidades) => {
-      // Implementación de la función agruparPorDia
-    },
-    getDiaNombre: (dia) => {
-      // Implementación de la función getDiaNombre
-    },
-    formatHora: (hora) => {
-      // Implementación de la función formatHora
-    }
-  };
+  if (missing.length) {
+    console.error("Faltan scripts/API en window:", missing);
+  }
 
-  const ResenasAPI = {
-    getByServicio: async (id) => {
-      // Implementación de la función getByServicio
-    },
-    calcularPromedio: (reviews) => {
-      // Implementación de la función calcularPromedio
-    },
-    formatFecha: (fecha) => {
-      // Implementación de la función formatFecha
-    },
-    generarEstrellas: (calificacion) => {
-      // Implementación de la función generarEstrellas
-    }
-  };
-
-  const ContratacionesAPI = {
-    create: async (contratacion) => {
-      // Implementación de la función create
-    }
-  };
-
-  const getCurrentUser = () => {
-    // Implementación de la función getCurrentUser
-  };
+ 
 
   async function loadServiceData() {
     const serviceId = getServiceId();
