@@ -11,6 +11,18 @@
     return urlParams.get('id');
   }
 
+  function resolveImageUrl(url) {
+  if (!url) return "assets/img/placeholder-service.jpg";
+
+  // Si ya es absoluta, la devolvemos tal cual
+  if (url.startsWith("http://") || url.startsWith("https://")) return url;
+
+  // Si es relativa, la armamos con el backend (API_CONFIG.BASE_URL)
+  const base = window.API_CONFIG?.BASE_URL || "";
+  const clean = url.startsWith("/") ? url : `/${url}`;
+  return `${base}${clean}`;
+}
+
   // ===========================
   // CARGAR DATOS DEL SERVICIO
   // ===========================
@@ -116,14 +128,22 @@
     if (!carouselImages) return;
 
     // Ordenar por orden
-    imagenes.sort((a, b) => a.orden - b.orden);
+    imagenes.sort((a, b) => (a.orden ?? 0) - (b.orden ?? 0));
 
-    carouselImages.innerHTML = imagenes.map((img, index) => `
-      <img src="${img.imagen_url}" alt="Imagen del servicio" 
-           class="carousel__image ${index === 0 ? 'active' : ''}"
-           onerror="this.src='assets/img/placeholder-service.jpg'">
-    `).join('');
+    carouselImages.innerHTML = imagenes.map((img, index) => {
+      const src = resolveImageUrl(img.imagen_url);
+
+      return `
+        <img 
+          src="${src}"
+          alt="Imagen del servicio"
+          class="carousel__image ${index === 0 ? 'active' : ''}"
+          onerror="this.src='assets/img/placeholder-service.jpg'"
+        >
+      `;
+    }).join('');
   }
+
 
   // Mostrar disponibilidad
   function displayAvailability(disponibilidades) {
