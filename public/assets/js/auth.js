@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
       try {
         // Llamada a la API de login
         const response = await UsuariosAPI.login(email, password_hash);
-        console.log(response);
+        console.log("Respuesta login:", response);
         showToast('Inicio de sesión exitoso', 'success');
         setTimeout(() => {
           console.log('TOKEN GUARDADO:', localStorage.getItem('authToken'));

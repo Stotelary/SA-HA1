@@ -42,20 +42,23 @@ const UsuariosAPI = {
     @param {string} password
     @returns {Promise<object>}
    */
-  async login(email, password_hash) {
-    console.log("funcion login");
+  async login(email, password) {
     const response = await apiRequest('/api/auth/login', {
       method: 'POST',
-      body: JSON.stringify({ email, password_hash })
+      body: JSON.stringify({ email, password })
     });
 
-    // Si el login es exitoso, guardar token y usuario
+    // Guardar token
     if (response.token) {
       setAuthToken(response.token);
     }
-    if (response.usuario) {
-      setCurrentUser(response.usuario);
-    }
+
+    // Guardar usuario (tal como viene del backend)
+    setCurrentUser({
+      nombre: response.nombre,
+      email: response.email,
+      rol: response.rol
+    });
 
     return response;
   },
