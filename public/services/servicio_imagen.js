@@ -116,7 +116,7 @@ const ServicioImagenAPI = {
    */
   async getPrincipalUrl(idServicio) {
     const imagen = await this.getPrincipal(idServicio);
-    return imagen ? imagen.imagen_url : 'assets/images/placeholder-service.jpg';
+    return imagen ? imagen.imagen_url : 'assets/img/placeholder-service.jpg';
   }
 };
 
