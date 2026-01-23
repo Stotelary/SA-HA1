@@ -65,6 +65,7 @@
       if (imagenes && imagenes.length > 0) {
         displayCarouselImages(imagenes);
       }
+      console.log(imagenes);
 
       // Cargar disponibilidad
       const disponibilidad = await ServicioDisponibilidadAPI.getByServicio(serviceId);
