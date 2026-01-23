@@ -12,7 +12,7 @@
 
 //const apiRequest = require('./apiRequest'); // Assuming apiRequest is a module that needs to be imported
 
-const ServiciosAPI = {
+window.ServiciosAPI = window.ServiciosAPI || {
   // Constantes para modalidad
   MODALIDAD: {
     PRESENCIAL: 1,
@@ -166,5 +166,3 @@ const ServiciosAPI = {
   }
 };
 
-// Exportar para uso global
-window.ServiciosAPI = ServiciosAPI;
