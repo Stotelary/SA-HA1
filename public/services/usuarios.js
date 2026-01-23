@@ -45,7 +45,13 @@ const UsuariosAPI = {
   async login(email, password) {
     const response = await apiRequest('/api/auth/login', {
       method: 'POST',
-      body: JSON.stringify({ email, password })
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password
+      })
     });
 
     // Guardar token
@@ -53,7 +59,7 @@ const UsuariosAPI = {
       setAuthToken(response.token);
     }
 
-    // Guardar usuario (tal como viene del backend)
+    // Guardar usuario en localStorage
     setCurrentUser({
       nombre: response.nombre,
       email: response.email,
