@@ -32,12 +32,18 @@ function showToast(message, type = 'success') {
 // ===========================
 // CARGAR DATOS DEL USUARIO
 // ===========================
-function loadUserData() {
+async function loadUserData() {
   const user = checkAuth();
   if (!user) return;
 
-  console.log("Usuario cargado en perfil:", user);
-  displayUserData(user);
+  try {
+    const fullUser = await UsuariosAPI.getProfile();
+    setCurrentUser(fullUser);
+    displayUserData(fullUser);
+  } catch (error) {
+    console.warn("Usando datos básicos del login");
+    displayUserData(user);
+  }
 }
 
 // Mostrar datos del usuario en la UI
