@@ -31,12 +31,12 @@ console.log("catalogo.js cargado ✅");
       
       // Mapear campos del backend a los esperados por el frontend
       allServices = await Promise.all(serviciosBackend.map(async (service) => {
-        const idServicio = service.id_servicio ?? service.idServicio;
-        const idUsuario  = service.id_usuario ?? service.idUsuario;
+        const id_servicio = service.id_servicio ?? service.idServicio;
+        const id_usuario  = service.id_usuario ?? service.idUsuario;
 
         let imagenUrl = 'assets/img/placeholder-service.jpg';
         try {
-          const imagenes = await ServicioImagenAPI.getByServicio(idServicio);
+          const imagenes = await ServicioImagenAPI.getByServicio(id_servicio);
           if (Array.isArray(imagenes) && imagenes.length > 0) {
             imagenes.sort((a, b) => (a.orden ?? 0) - (b.orden ?? 0));
             imagenUrl = imagenes[0].imagen_url;
@@ -45,14 +45,14 @@ console.log("catalogo.js cargado ✅");
 
         let rating = 4.5;
         try {
-          const resenas = await ResenasAPI.getByServicio(idServicio);
+          const resenas = await ResenasAPI.getByServicio(id_servicio);
           if (Array.isArray(resenas) && resenas.length > 0) {
             rating = parseFloat(ResenasAPI.calcularPromedio(resenas));
           }
         } catch (e) {}
 
         return {
-          id: idServicio,
+          id: id_servicio,
           name: service.nombre,
           description: service.descripcion,
           price: parseFloat(service.precio),
@@ -60,7 +60,7 @@ console.log("catalogo.js cargado ✅");
           modalidad: service.modalidad,
           rating,
           image: imagenUrl,
-          id_usuario: idUsuario
+          id_usuario: id_usuario
         };
       }));
 
