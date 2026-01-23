@@ -6,6 +6,9 @@
 
 ;(() => {
   // Obtener ID del servicio de la URL
+
+
+  
   function getServiceId() {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get('id');
@@ -58,7 +61,7 @@
       displayServiceData(servicio);
 
       // Cargar imágenes del servicio
-      const imagenes = await ServicioImagenAPI.getByServicio(serviceId);
+      const imagenes = await ServicioImagenAPI.getById(serviceId);
       if (imagenes && imagenes.length > 0) {
         displayCarouselImages(imagenes);
       }

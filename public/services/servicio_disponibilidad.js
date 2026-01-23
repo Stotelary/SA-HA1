@@ -9,8 +9,6 @@
 // - hora_fin (time)
 // UNIQUE KEY (id_servicio, dia_semana, hora_inicio, hora_fin)
 
-const apiRequest = require('./apiRequest'); // Assuming apiRequest is imported from another module
-
 const ServicioDisponibilidadAPI = {
   // Constantes para días de la semana
   DIAS_SEMANA: {
