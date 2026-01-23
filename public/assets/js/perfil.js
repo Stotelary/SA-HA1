@@ -33,16 +33,20 @@ function showToast(message, type = 'success') {
 // CARGAR DATOS DEL USUARIO
 // ===========================
 async function loadUserData() {
-  const user = checkAuth();
-  if (!user) return;
+  const basicUser = checkAuth();
+  if (!basicUser) return;
 
   try {
-    const fullUser = await UsuariosAPI.getProfile();
-    setCurrentUser(fullUser);
+    const fullUser = await UsuariosAPI.getProfile();   // ← viene con id_usuario
+    setCurrentUser(fullUser);                          // ← IMPORTANTÍSIMO
     displayUserData(fullUser);
+
+    // AHORA sí puedes cargar contrataciones
+    loadContrataciones(fullUser.id_usuario);
+
   } catch (error) {
-    console.warn("Usando datos básicos del login");
-    displayUserData(user);
+    console.warn("Usando datos básicos");
+    displayUserData(basicUser);
   }
 }
 
