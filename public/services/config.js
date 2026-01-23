@@ -32,9 +32,10 @@ async function apiRequest(endpoint, options = {}) {
     }
   };
 
-  // Agregar token si existe
+  // Agregar token si existe (PERO NO en auth)
   const token = getAuthToken();
-  if (token) {
+  const isAuthEndpoint = endpoint.startsWith('/api/auth/');
+  if (token && !isAuthEndpoint) {
     config.headers['Authorization'] = `Bearer ${token}`;
   }
 
