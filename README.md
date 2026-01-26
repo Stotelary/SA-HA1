@@ -147,6 +147,6 @@ CREATE TABLE resena (
 * Bayron Benavides ([perfil de GitHub](https://github.com/BayronBA))
 * Camila San Martín ([perfil de GitHub](https://github.com/Camimi-96))
 * Cristian Delgadillo ([perfil de GitHub](https://github.com/cristiandelgadillo))
-* Francesca Díaz ([perfil de GitHub](https://github.com/Fraan97))
+* Francesca Carcamo ([perfil de GitHub](https://github.com/Fraan97))
 * Luis Gonzáles ([perfil de GitHub](https://github.com/hnxvxzls))
 * Matías Pérez ([perfil de GitHub](https://github.com/Mbatiass))
