@@ -11,6 +11,7 @@
   
   function getServiceId() {
     const urlParams = new URLSearchParams(window.location.search);
+    console.log(urlParams);
     return urlParams.get('id');
   }
 
